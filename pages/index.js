@@ -28,7 +28,7 @@ export default function Home({ exploreData, cardsData }) {
 
       <main className="max-w-7xl mx-auto px-8 sm:px-16">
         <section className="pt-6">
-          <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
+          <h2 className="text-xl md:text-4xl font-semibold pb-0 md:pb-5">Explore Nearby</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
             {exploreData.map(({ img, distance, location }) => (
@@ -42,7 +42,7 @@ export default function Home({ exploreData, cardsData }) {
           </div>
         </section>
         <section className="pt-6">
-            <h2 className="text-4xl font-semibold py-7">Live anywhere</h2>
+            <h2 className="text-xl md:text-4xl font-semibold py-0 md:py-7">Live anywhere</h2>
         
         <Swiper  className=" " freeMode={true}
         slidesPerView={1.3}
@@ -79,7 +79,7 @@ export default function Home({ exploreData, cardsData }) {
 
 
 <section className=" mb-8">
-            <h2 className="text-4xl font-semibold py-7">Discover activities</h2>
+            <h2 className="text-xl md:text-4xl font-semibold py-0 md:py-7">Discover activities</h2>
         
         <Swiper  className=" " freeMode={true}
         slidesPerView={1.3}

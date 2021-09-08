@@ -68,22 +68,22 @@ function Header({ placeholder }) {
           onChange={(e) => setSearchInput(e.target.value)}
           type="text"
           placeholder={placeholder || "Start your search"}
-          className="flex-grow md:pl-5 bg-transparent outline-none"
+          className="flex-grow md:pl-5 bg-transparent outline-none text-center md:text-left"
         />
         <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2 " />
       </div>
 
-      <div className="flex space-x-4 items-center justify-end text-gray-500">
+      <div className="flex space-x-4 items-center justify-end text-gray-500 ">
         <p className="hidden md:inline-flex cursor-pointer">Become a host</p>
         <GlobeAltIcon className="hidden md:inline-flex h-6" />
-        <div className="flex items-center space-x-2 border-2 p-2 rounded-full">
+        <div className="flex items-center space-x-2 border-2 p-2 rounded-full bg-white">
           <MenuIcon className="h-6" />
           <UserCircleIcon className="h-6" />
         </div>
       </div>
 
       {searchInput && (
-        <div className="flex flex-col col-span-3 mx-auto mt-5">
+        <div className="flex flex-col col-span-3 mx-auto mt-5 ">
           <DateRangePicker
             ranges={[selectionRange]}
             minDate={new Date()}

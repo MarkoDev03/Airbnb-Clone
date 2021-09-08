@@ -11,7 +11,7 @@ function LastCard({img, title, description}) {
                />
             </div>
             <h3 className="text-2xl mt-3">{title}</h3>
-            <p className="text-gray-400">{description}</p>
+            <p className="text-xs md:text-xl text-gray-400">{description}</p>
         </div>
     )
 }
