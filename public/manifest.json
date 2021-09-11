@@ -7,21 +7,21 @@
     "display":"standalone",
     "icons":[
         {
-            "src":"./airbnb.jpg",
+            "src":"./airbnb.png",
             "sizes":"300x300",
-            "type":"image/jpg",
+            "type":"image/png",
             "purpose": "any maskable"
         },
         {
-            "src":"./airbnb.jpg",
+            "src":"./airbnb.png",
             "sizes":"512x512",
-            "type":"image/jpg",
+            "type":"image/png",
             "purpose": "any maskable"
         },
         {
-            "src":"./airbnb.jpg",
+            "src":"./airbnb.png",
             "sizes":"300x300",
-            "type":"image/jpg",
+            "type":"image/png",
             "purpose": "any maskable"
         }
     ]

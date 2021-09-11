@@ -1,10 +1,10 @@
 self.addEventListener("install",e => {
     e.waitUntil(
         caches.open("static").then(cache => {
-            return cache.addAll(["./",
+            return cache.addAll([".",
            
-           
-            "./airbnb.jpg"]);
+           "",
+            "./airbnb.png"]);
        }).then(_ => this.skipWaiting())
     );
 });
