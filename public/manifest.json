@@ -1,0 +1,28 @@
+{
+    "name":"Airbnb",
+    "short_name":"Airbnb",
+    "start_url":".",
+    "background_color":"#ffffff",
+    "theme_color":"#000000",
+    "display":"standalone",
+    "icons":[
+        {
+            "src":"./airbnb.jpg",
+            "sizes":"300x300",
+            "type":"image/jpg",
+            "purpose": "any maskable"
+        },
+        {
+            "src":"./airbnb.jpg",
+            "sizes":"512x512",
+            "type":"image/jpg",
+            "purpose": "any maskable"
+        },
+        {
+            "src":"./airbnb.jpg",
+            "sizes":"300x300",
+            "type":"image/jpg",
+            "purpose": "any maskable"
+        }
+    ]
+}

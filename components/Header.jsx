@@ -11,6 +11,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css"; 
 import { DateRangePicker } from "react-date-range";
 import { useRouter } from 'next/dist/client/router'
+import Geocode from "react-geocode";
 
 function Header({ placeholder }) {
   const [searchInput, setSearchInput] = useState("");
@@ -68,7 +69,7 @@ function Header({ placeholder }) {
           onChange={(e) => setSearchInput(e.target.value)}
           type="text"
           placeholder={placeholder || "Start your search"}
-          className="flex-grow md:pl-5 bg-transparent outline-none text-center md:text-left"
+          className="flex-grow md:pl-5 bg-transparent outline-none text-sm text-center md:text-left"
         />
         <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2 " />
       </div>

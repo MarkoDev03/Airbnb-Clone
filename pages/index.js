@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import LargeCard from "../components/LargeCard";
 import LastCard from "../components/LastCard";
+import React, {useEffect} from "react";
 
 export default function Home({ exploreData, cardsData }) {
 
@@ -16,11 +17,24 @@ export default function Home({ exploreData, cardsData }) {
     {img:"https://a0.muscache.com/im/pictures/0ce799cb-7553-4369-be9e-d0011e0ef636.jpg?im_w=720",title:"Online experiences",desc:"Live interactive activities led by the hosts."},
     {img:"https://a0.muscache.com/im/pictures/f51f70fb-93b7-4974-86e8-1195b64f1353.jpg?im_w=720",title:"Olympians and Paralympians",desc:"Online activities organized by athletes."},
   ]
+
+useEffect(() => {
+  if ( "serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js").then(registration =>{
+       console.log("SW Registred");
+      console.log(registration);
+    }).catch(error => {
+      console.log("SW Regstration failed");
+       console.log(error);
+   })
+}
+}, [])
   return (
     <div className="">
       <Head>
         <title>Airbnb</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/airbnb.jpg" />
+        <link rel="manifest" href="../public/manifest.json" />
       </Head>
 
       <Header></Header>
