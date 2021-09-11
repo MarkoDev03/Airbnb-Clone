@@ -4,7 +4,8 @@ import { useRouter } from 'next/dist/client/router'
 import { format } from 'date-fns'
 import InfoCard from "../components/InfoCard";
 import Map from "../components/Map";
-;
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function search({ searchResults }) {
 
@@ -13,10 +14,77 @@ function search({ searchResults }) {
     const formattedStartDate = format(new Date(startDate), "dd MMM yy")
     const formattedEndDate= format(new Date(endDate), "dd MMM yy")
     const range = `${formattedStartDate} - ${formattedEndDate}`;
-        
+    const [lat, setLat] = useState(0)
+    const [lon, setLon] = useState(0)
+    const [hotels, setHotels] = useState([])
+
+useEffect(() => {
+    const getWeatherData = async () => {
+        try {
+          
+            const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/find', {
+              params: { q:location },
+              headers: {
+                'x-rapidapi-key':'9ba6490420msh35e083a18335c5cp17dac9jsn87d5b3c7254d',
+                'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
+              },
+            });
+             console.log(data.list[0].coord)
+             setLat(data.list[0].coord.lat)
+             setLon(data.list[0].coord.lon)
+             const options = {
+                method: 'GET',
+                url: 'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng',
+                params: {
+                  latitude: data.list[0].coord.lat,
+                  longitude: data.list[0].coord.lon,
+                  lang: 'en_US',
+                  hotel_class: '1,2,3',
+                  limit: '30',
+                  adults: '1',
+                  rooms: '1',
+                  child_rm_ages: '7,10',
+                  currency: 'USD',
+                  zff: '4,6',
+                  subcategory: 'hotel,bb,specialty',
+                  nights: '2'
+                },
+                headers: {
+                  'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
+                  'x-rapidapi-key': '9ba6490420msh35e083a18335c5cp17dac9jsn87d5b3c7254d'
+                }
+              };
+              
+              axios.request(options).then(function (response) {
+                  console.log(response.data.data);
+                  //setHotels(response.data.data)
+                  var a = []
+                  response.data.data.forEach(item => {
+                      if (item.photo != undefined) {
+                            a.push(item)
+                      }
+                  });
+
+                  setHotels(a)
+            
+              }).catch(function (error) {
+                  console.error(error);
+              });
+                 
+            return data;
+          
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getWeatherData()
+}, [location])
+
+
     return (
         <div>
             <Header placeholder={`${location} | ${range} `} />
+           
             <main className=' grid grid-cols-1 xl:grid-cols-2'>
                <section className='flex-grow pt-14 md:px-6'>
                    <p className='pl-2 text-xs'>300+ stays for - {range} - {noOfGuests} guests</p>
@@ -30,16 +98,16 @@ function search({ searchResults }) {
                        <p className='button'>More filters</p>
                    </div>
                   <div className="flex flex-col">
-                  {searchResults.map(({img, location, title, description, star, price, total}) => (
+                  {hotels.map((hotel) => (
                        <InfoCard  
-                           key={img}
-                           img={img}
+                           key={hotel.photo.images.large.url != undefined  ? hotel.photo.images.large.url : ""}
+                           img={hotel.photo.images.large.url != undefined ? hotel.photo.images.large.url : ""}
                            location={location}
-                           title={title}
-                           description={description}
-                           star={star}
-                           price={price}
-                           total={total}
+                           title={hotel.name}
+                           description={hotel.hotel_class_attribution}
+                           star={hotel.rating}
+                           price={hotel.price}
+                           total={hotel.price}
                        />
                    ))}
                   </div>
@@ -65,3 +133,4 @@ export async function getServerSideProps() {
         },
     }
 }
+
