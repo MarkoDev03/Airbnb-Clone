@@ -80,13 +80,12 @@ useEffect(() => {
       getWeatherData()
 }, [location])
 
-
     return (
         <div>
             <Header placeholder={`${location} | ${range} `} />
            
-            <main className=' grid grid-cols-1 xl:grid-cols-2'>
-               <section className='flex-grow pt-14 md:px-6'>
+            <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 '>
+               <section className='flex-grow pt-14 md:px-6' id='container1'>
                    <p className='pl-2 text-xs'>300+ stays for - {range} - {noOfGuests} guests</p>
                    <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {location}</h1>
                    <div className='hidden md:inline-flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
@@ -97,7 +96,7 @@ useEffect(() => {
                        <p className='button'>Stars</p>
                        <p className='button'>More filters</p>
                    </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col xl:max-h-[800px] overflow-y-auto">
                   {hotels.map((hotel) => (
                        <InfoCard  
                            key={hotel.photo.images.large.url != undefined  ? hotel.photo.images.large.url : ""}
@@ -112,8 +111,8 @@ useEffect(() => {
                    ))}
                   </div>
                </section>
-               <section className='hidden xl:inline-flex '>
-                    <Map />
+               <section className='h-[200px] xl:h-[1000px]' id='container2'>
+                    <Map  lat={lat} lon={lon}/>
                </section>
             </main>
             <Footer />
