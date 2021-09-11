@@ -85,8 +85,8 @@ useEffect(() => {
             <Header placeholder={`${location} | ${range} `} />
            
             <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 '>
-               <section className='flex-grow pt-14 md:px-6' id='container1'>
-                   <p className='pl-2 text-xs'>300+ stays for - {range} - {noOfGuests} guests</p>
+               <section className='flex-grow pt-4 md:px-6' id='container1'>
+                   <p className='pl-2 text-base'>300+ stays for - {range} - {noOfGuests} guests</p>
                    <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {location}</h1>
                    <div className='hidden md:inline-flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
                        <p className='button'>Cancellation Flexibility</p>
@@ -101,12 +101,15 @@ useEffect(() => {
                        <InfoCard  
                            key={hotel.photo.images.large.url != undefined  ? hotel.photo.images.large.url : ""}
                            img={hotel.photo.images.large.url != undefined ? hotel.photo.images.large.url : ""}
-                           location={location}
+                           location={hotel.ranking}
                            title={hotel.name}
                            description={hotel.hotel_class_attribution}
                            star={hotel.rating}
                            price={hotel.price}
                            total={hotel.price}
+                           votecount={hotel.num_reviews}
+                           cityname={hotel.location_string}
+                           distance={Math.round(hotel.distance, 1)}
                        />
                    ))}
                   </div>

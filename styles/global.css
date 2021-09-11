@@ -12,3 +12,6 @@ html, * {
 html::-webkit-scrollbar, *::-webkit-scrollbar{
   display: none;
 }
+::selection{
+    background-color: transparent;
+}
