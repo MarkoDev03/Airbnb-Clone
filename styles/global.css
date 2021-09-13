@@ -15,3 +15,23 @@ html::-webkit-scrollbar, *::-webkit-scrollbar{
 ::selection{
     background-color: transparent;
 }
+@media only screen and (min-width:1275px) and (max-width:1530px){
+    .location{
+        font-size: 12px;
+    }
+    .title{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+    .data-dwn{
+        height: fit-content;
+        padding: 0px;
+        margin-top: -8px;
+    }
+    .data-card{
+        padding-block:15px ;
+    }
+}

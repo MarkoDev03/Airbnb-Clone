@@ -9,6 +9,7 @@
     "@badrap/bar-of-progress": "^0.1.2",
     "@heroicons/react": "^1.0.4",
     "@react-google-maps/api": "^2.2.0",
+    "@sergeymyssak/swipeable-bottom-sheet": "^0.0.7",
     "axios": "^0.21.4",
     "date-fns": "^2.23.0",
     "geocoder": "^0.2.3",

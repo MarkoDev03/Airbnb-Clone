@@ -17,8 +17,10 @@ function search({ searchResults }) {
     const [lat, setLat] = useState(0)
     const [lon, setLon] = useState(0)
     const [hotels, setHotels] = useState([])
+    const [width, setWidth] = useState(700)
 
 useEffect(() => {
+    //setWidth(window.innerWidth)
     const getWeatherData = async () => {
         try {
           
@@ -85,10 +87,10 @@ useEffect(() => {
             <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
            
             <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 '>
-               <section className='flex-grow pt-4 md:px-6' id='container1'>
+               <section className='flex-grow pt-4 md:px-6 sm:rounded-t-lg ' id='container1'>
                    <p className='pl-2 text-base'>300+ stays for - {range} - {noOfGuests} guests</p>
                    <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {location}</h1>
-                   <div className='overflow-auto flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
+                   <div className='overflow-auto px-2 md:px-0 pb-2 flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
                        <p className='button'>Cancellation Flexibility</p>
                        <p className='button'>Type of Place</p>
                        <p className='button'>Price</p>
@@ -108,13 +110,13 @@ useEffect(() => {
                            price={hotel.price}
                            total={hotel.price}
                            votecount={hotel.num_reviews}
-                           cityname={hotel.location_string}
+                           range={range}
                            distance={Math.round(hotel.distance, 1)}
                        />
                    ))}
                   </div>
                </section>
-               <section className='h-[300px] xl:h-[1000px]' id='container2'>
+               <section className='h-[350px] xl:h-[1000px]' id='container2'>
                     <Map  lat={lat} lon={lon}/>
                </section>
             </main>
