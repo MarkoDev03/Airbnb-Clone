@@ -40,7 +40,7 @@ useEffect(() => {
                   longitude: data.list[0].coord.lon,
                   lang: 'en_US',
                   hotel_class: '1,2,3',
-                  limit: '30',
+                  limit: '80',
                   adults: '1',
                   rooms: '1',
                   child_rm_ages: '7,10',
@@ -82,13 +82,13 @@ useEffect(() => {
 
     return (
         <div>
-            <Header placeholder={`${location} | ${range} `} />
+            <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
            
             <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 '>
                <section className='flex-grow pt-4 md:px-6' id='container1'>
                    <p className='pl-2 text-base'>300+ stays for - {range} - {noOfGuests} guests</p>
                    <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {location}</h1>
-                   <div className='hidden md:inline-flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
+                   <div className='overflow-auto flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
                        <p className='button'>Cancellation Flexibility</p>
                        <p className='button'>Type of Place</p>
                        <p className='button'>Price</p>
@@ -114,7 +114,7 @@ useEffect(() => {
                    ))}
                   </div>
                </section>
-               <section className='h-[200px] xl:h-[1000px]' id='container2'>
+               <section className='h-[300px] xl:h-[1000px]' id='container2'>
                     <Map  lat={lat} lon={lon}/>
                </section>
             </main>

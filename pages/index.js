@@ -62,7 +62,8 @@ useEffect(() => {
         <section className="pt-6">
             <h2 className="text-xl md:text-4xl font-semibold py-0 md:py-7">Live anywhere</h2>
         
-        <Swiper  className=" " freeMode={true}
+        <Swiper  freeMode={true}
+        className='px-20'
         slidesPerView={1.3}
         spaceBetween={10}
        breakpoints={{
@@ -76,7 +77,7 @@ useEffect(() => {
       }} 
         >
          {cardsData?.map(({img, title}) => (
-             <SwiperSlide className="mb-3 ml-2">
+             <SwiperSlide className="mb-3 first:ml-2">
                <MediumCard 
                 key={img}
                 img={img}

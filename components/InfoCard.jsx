@@ -20,11 +20,8 @@ function InfoCard({ img, location, title, description, star, price, total , vote
             <p className='text-base pt-2 flex-grow text-gray-600'>{description}</p>
              <p className='text-xs flex-grow text-gray-400'>{distance} km from downtown</p>
             </div>
-            <div className='hidden md:flex items-center pt-1'>
-              <HiLocationMarker  className='text-xl cursor-pointer ' />
-              <span className='text-gray-600'>{cityname}</span>
-            </div>
-             <div className='flex justify-between items-center md:items-end pt-3 md:pt-0'>
+     
+             <div className='flex justify-between items-center md:items-end pt-3 md:pt-5'>
                  <p className='flex text-lg'>
                     <StarIcon  className='h-7 text-red-400'/>
                     {star} <span className='text-gray-600 ml-1'>({votecount} votes)</span>
