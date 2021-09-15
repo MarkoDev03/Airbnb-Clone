@@ -63,10 +63,11 @@ function Map({lon, lat, hotels}) {
                            closeOnClick={true}
                            longitude={+hotel.longitude}
                            latitude={+hotel.latitude}
-                           className='z-20 w-[150px]  md:w-[350px]'
+                           className='z-20 w-[250px]  md:w-[350px]'
                            
                         >
                            <p className='text-base font-semibold'>{hotel.name}</p>
+                           <p className="text-xs text-gray-600">{hotel.ranking}</p>
                             <img src={hotel.photo.images.large.url != undefined ? hotel.photo.images.large.url : ""} alt="" className='w-100 h-auto rounded-lg p-1'  />
                             <Rating name="read-only" value={Number(hotel.rating)} readOnly />
                             <p className='font-semibold pl-1 text-sm'>{hotel.price} <span className='text-base text-gray-400 title'>/ per night</span></p>
