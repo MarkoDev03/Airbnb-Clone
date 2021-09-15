@@ -117,7 +117,7 @@ useEffect(() => {
                   </div>
                </section>
                <section className='h-[350px] xl:h-[1000px]' id='container2'>
-                    <Map  lat={lat} lon={lon}/>
+                    <Map  lat={lat} lon={lon} hotels={hotels} />
                </section>
             </main>
             <Footer />
