@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {  StarIcon } from "@heroicons/react/solid";
 import { HiOutlineHeart , HiLocationMarker} from "react-icons/hi";
+import Rating from '@material-ui/lab/Rating';
 
 function InfoCard({ img, location, title, description, star, price, total , votecount, distance, range}) {
   return (
@@ -26,8 +27,7 @@ function InfoCard({ img, location, title, description, star, price, total , vote
      
              <div className='flex justify-between items-center md:items-center pt-3 md:pt-5 data-dwn'>
                  <p className='flex text-lg'>
-                    <StarIcon  className='h-7 text-red-400'/>
-                    {star} <span className='text-gray-600 ml-1 title'>({votecount} votes)</span>
+                 <Rating name="read-only" value={Number(star)} readOnly />
                  </p>
                  <div>
                    <p className='font-semibold pb-2 text-xl'>{price} <span className='text-base text-gray-400 pb-2 title'>/ per night</span>
