@@ -64,7 +64,7 @@ useEffect(() => {
         
         <Swiper  freeMode={true}
         className='px-20'
-        slidesPerView={1.3}
+        slidesPerView={1.1}
         spaceBetween={10}
        breakpoints={{
         "640": {"slidesPerView": 1.1,"spaceBetween": 10},
@@ -101,10 +101,10 @@ useEffect(() => {
             <h2 className="text-xl md:text-4xl font-semibold py-0 md:py-7">Discover activities</h2>
         
         <Swiper  className=" " freeMode={true}
-        slidesPerView={1.3}
+        slidesPerView={1}
         spaceBetween={10}
        breakpoints={{
-        "640": {"slidesPerView": 1.1,"spaceBetween": 10},
+        "640": {"slidesPerView": 1,"spaceBetween": 10},
         "768": {"slidesPerView":1.6,"spaceBetween": 10},
         "1024": {"slidesPerView": 2.8,"spaceBetween": 0},
         "1920": {"slidesPerView": 2.8,"spaceBetween": 0},

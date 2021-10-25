@@ -14,13 +14,13 @@ function search() {
     const formattedStartDate = format(new Date(startDate), "dd MMM yy")
     const formattedEndDate= format(new Date(endDate), "dd MMM yy")
     const range = `${formattedStartDate} - ${formattedEndDate}`;
+
     const [lat, setLat] = useState(0)
     const [lon, setLon] = useState(0)
     const [hotels, setHotels] = useState([])
-    const [width, setWidth] = useState(700)
+    const [placeHolder, setPlaceHolder] = useState("");
 
     useLayoutEffect(() => {
-    //setWidth(window.innerWidth)
     const getWeatherData = async () => {
         try {
           
@@ -31,9 +31,10 @@ function search() {
                 'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
               },
             });
-             console.log(data.list[0].coord)
+
              setLat(data.list[0].coord.lat)
              setLon(data.list[0].coord.lon)
+
              const options = {
                 method: 'GET',
                 url: 'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng',
@@ -58,8 +59,7 @@ function search() {
               };
               
               axios.request(options).then(function (response) {
-                  console.log(response.data.data);
-                  //setHotels(response.data.data)
+
                   var a = []
                   response.data.data.forEach(item => {
                       if (item.photo != undefined) {
@@ -79,12 +79,16 @@ function search() {
           console.log(error);
         }
       };
+
       getWeatherData()
+
+      setPlaceHolder(window.innerWidth > 900 ? location + " |  " + range + " | " +  noOfGuests + " guests" : location)
+      
 }, [location])
 
     return (
         <div>
-            <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
+            <Header placeholder={placeHolder} />
            
             <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'>
                <section className='flex-grow pt-4 md:px-6 sm:rounded-t-lg ' id='container1'>
@@ -98,7 +102,7 @@ function search() {
                        <p className='button'>Stars</p>
                        <p className='button'>More filters</p>
                    </div>
-                  <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" id="search-results-container">
+                  <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" >
                   {hotels.map((hotel) => (
                        <InfoCard  
                            key={hotel.photo.images.large.url != undefined  ? hotel.photo.images.large.url : ""}
