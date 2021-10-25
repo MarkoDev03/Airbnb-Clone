@@ -1,8 +1,7 @@
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import getCenter from 'geolib/es/getCenter'
 import Rating from '@material-ui/lab/Rating';
-
 
 function Map({lon, lat, hotels}) {
 
@@ -21,7 +20,7 @@ function Map({lon, lat, hotels}) {
         zoom:8,
     })
    
-    useEffect(() => {
+    useLayoutEffect(() => {
         const coordinates = hotels.map(result => ({
             longitude:result.longitude,
             latitude:result.latitude
@@ -55,7 +54,7 @@ function Map({lon, lat, hotels}) {
                      offsetTop={-10}
                      offsetLeft={-20}
                   >
-                      <p onClick={() => setSelectedLocation(hotel)} className='cursor-pointer text-2xl animate-bounce z-10'>📌</p>
+                      <p onClick={() => setSelectedLocation(hotel)} className='cursor-pointer text-2xl z-10'>📍</p>
                   </Marker>
                   {selectedLocation.longitude == hotel.longitude ? (
                         <Popup

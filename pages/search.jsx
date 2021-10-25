@@ -5,9 +5,9 @@ import { format } from 'date-fns'
 import InfoCard from "../components/InfoCard";
 import Map from "../components/Map";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 
-function search({ searchResults }) {
+function search() {
 
     const router = useRouter()
     const { location, startDate, endDate, noOfGuests } = router.query;
@@ -19,7 +19,7 @@ function search({ searchResults }) {
     const [hotels, setHotels] = useState([])
     const [width, setWidth] = useState(700)
 
-useEffect(() => {
+    useLayoutEffect(() => {
     //setWidth(window.innerWidth)
     const getWeatherData = async () => {
         try {
@@ -86,7 +86,7 @@ useEffect(() => {
         <div>
             <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
            
-            <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 '>
+            <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'>
                <section className='flex-grow pt-4 md:px-6 sm:rounded-t-lg ' id='container1'>
                    <p className='pl-2 text-base'>300+ stays for - {range} - {noOfGuests} guests</p>
                    <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {location}</h1>
@@ -98,7 +98,7 @@ useEffect(() => {
                        <p className='button'>Stars</p>
                        <p className='button'>More filters</p>
                    </div>
-                  <div className="flex flex-col xl:max-h-[800px] overflow-y-auto">
+                  <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" id="search-results-container">
                   {hotels.map((hotel) => (
                        <InfoCard  
                            key={hotel.photo.images.large.url != undefined  ? hotel.photo.images.large.url : ""}

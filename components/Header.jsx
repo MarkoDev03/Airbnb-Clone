@@ -11,7 +11,6 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css"; 
 import { DateRangePicker } from "react-date-range";
 import { useRouter } from 'next/dist/client/router'
-import Geocode from "react-geocode";
 
 function Header({ placeholder }) {
   const [searchInput, setSearchInput] = useState("");
@@ -63,7 +62,7 @@ function Header({ placeholder }) {
         />
       </div>
 
-      <div className="flex items-center md:border-2 rounded-full py-1 md:shadow-sm text-gray-600 text-sm placeholder-gray-400">
+      <div className="flex m-2 items-center md:border-2 rounded-full py-1 md:shadow-sm text-gray-600 text-sm placeholder-gray-400">
         <input
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
