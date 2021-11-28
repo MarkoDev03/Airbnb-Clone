@@ -88,6 +88,7 @@ function search() {
 
     return (
         <div style={{overflowX:'none'}}>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
             <Header placeholder={placeHolder} />
            
             <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'  style={{width:'100%'}}>
