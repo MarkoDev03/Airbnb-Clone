@@ -90,7 +90,7 @@ function search() {
         <div style={{overflowX:'none'}}>
             <Header placeholder={placeHolder} />
            
-            <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component' style={{overflowX:'none'}}>
+            <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'  style={{width:'100%'}}>
                <section className='flex-grow pt-4 md:px-6 sm:rounded-t-lg ' id='container1'>
                    <p className='pl-2 text-base'>300+ stays for - {range} - {noOfGuests} guests</p>
                    <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {location}</h1>
@@ -102,7 +102,7 @@ function search() {
                        <p className='button'>Stars</p>
                        <p className='button'>More filters</p>
                    </div>
-                  <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" style={{overflowX:'none'}}>
+                  <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" style={{width:'100%'}}>
                   {hotels.map((hotel) => (
                        <InfoCard  
                            key={hotel.photo.images.large.url != undefined  ? hotel.photo.images.large.url : ""}

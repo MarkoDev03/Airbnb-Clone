@@ -5,7 +5,7 @@ import Rating from '@material-ui/lab/Rating';
 
 function InfoCard({ img, location, title, description, star, price, total , votecount, distance, range}) {
   return (
-    <div className=' active:scale-105 data-card flex-col md:flex md:flex-row md:items-center py-5 px-3 border-b cursor-pointer hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out first:border-t'>
+    <div className=' active:scale-105 data-card flex-col md:flex md:flex-row md:items-center py-5 px-3 border-b cursor-pointer hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out first:border-t' style={{width:'100%'}}>
       <div className="relative h-[250px] md:h-52 md:w-72 flex-grow md:flex-grow-0 md:flex-shrink-0  ">
         
         <Image src={img} layout="fill" objectFit="cover"  className='rounded-2xl'/>
