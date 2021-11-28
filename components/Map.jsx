@@ -6,6 +6,7 @@ import Rating from '@material-ui/lab/Rating';
 function Map({lon, lat, hotels}) {
 
     const [selectedLocation, setSelectedLocation] = useState({})
+    const [widthIn, setWidthIn] = useState(true)
 
     const [center, setCenter] = useState({
         longitude:lon,
@@ -37,6 +38,12 @@ function Map({lon, lat, hotels}) {
         longitude:center.longitude,
         zoom:12,
        })     
+       
+       if (window.innerWidth > 900) {
+        setWidthIn(true)
+    } else {
+        setWidthIn(false)
+    }
     }, [hotels])
 
     return (
@@ -44,9 +51,8 @@ function Map({lon, lat, hotels}) {
            mapStyle='mapbox://styles/perovicmarko/cktd5g6ig10tk17pp59qqowtd'
            mapboxApiAccessToken={process.env.mapbox_key}
            {...viewport}
-           width={100}
-           height={100}
-           style={{width:"100%", height:"100%"}}
+
+           style={{height:widthIn == true? "1000px" : "400px", width:"100%" }}
            onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
           {hotels.map((hotel) => (

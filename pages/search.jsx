@@ -18,6 +18,7 @@ function search() {
     const [lat, setLat] = useState(0)
     const [lon, setLon] = useState(0)
     const [hotels, setHotels] = useState([])
+    const [widthIn, setWidthIn] = useState(true)
     const [placeHolder, setPlaceHolder] = useState("");
 
     useLayoutEffect(() => {
@@ -72,7 +73,13 @@ function search() {
               }).catch(function (error) {
                   console.error(error);
               });
-                 
+              
+              if (window.innerWidth > 900) {
+                  setWidthIn(true)
+              } else {
+                  setWidthIn(false)
+              }
+
             return data;
           
         } catch (error) {
@@ -120,7 +127,7 @@ function search() {
                    ))}
                   </div>
                </section>
-               <section className='h-[400px] xl:h-[1000px]' id='container2' style={{width:'100%'}}>
+               <section  id='container2' style={{height:widthIn == true? "1000px" : "400px", width:"100%" }}>
                     <Map  lat={lat} lon={lon} hotels={hotels} />
                </section>
             </main>
