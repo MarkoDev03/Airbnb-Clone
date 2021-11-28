@@ -44,6 +44,7 @@ function Map({lon, lat, hotels}) {
            mapStyle='mapbox://styles/perovicmarko/cktd5g6ig10tk17pp59qqowtd'
            mapboxApiAccessToken={process.env.mapbox_key}
            {...viewport}
+           style={{width:"100%"}}
            onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
           {hotels.map((hotel) => (
