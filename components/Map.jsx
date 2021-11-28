@@ -1,5 +1,5 @@
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
-import { useState, useLayoutEffect } from 'react'
+import { useState, useEffect } from 'react'
 import getCenter from 'geolib/es/getCenter'
 import Rating from '@material-ui/lab/Rating';
 
@@ -20,7 +20,7 @@ function Map({lon, lat, hotels}) {
         zoom:8,
     })
    
-    useLayoutEffect(() => {
+    useEffect(() => {
         const coordinates = hotels.map(result => ({
             longitude:result.longitude,
             latitude:result.latitude
@@ -44,7 +44,9 @@ function Map({lon, lat, hotels}) {
            mapStyle='mapbox://styles/perovicmarko/cktd5g6ig10tk17pp59qqowtd'
            mapboxApiAccessToken={process.env.mapbox_key}
            {...viewport}
-           style={{width:"100%"}}
+           width={100}
+           height={100}
+           style={{width:"100%", height:"100%"}}
            onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
           {hotels.map((hotel) => (
