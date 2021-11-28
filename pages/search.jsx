@@ -18,7 +18,6 @@ function search() {
     const [lat, setLat] = useState(0)
     const [lon, setLon] = useState(0)
     const [hotels, setHotels] = useState([])
-    const [widthIn, setWidthIn] = useState(true)
     const [placeHolder, setPlaceHolder] = useState("");
 
     useLayoutEffect(() => {
@@ -43,15 +42,15 @@ function search() {
                   latitude: data.list[0].coord.lat,
                   longitude: data.list[0].coord.lon,
                   lang: 'en_US',
-                  hotel_class: '1,2,3,4,5',
+                  hotel_class: '1,2,3',
                   limit: '80',
-                  adults: '2',
+                  adults: '1',
                   rooms: '1',
                   child_rm_ages: '7,10',
                   currency: 'USD',
                   zff: '4,6',
                   subcategory: 'hotel,bb,specialty',
-                  nights: '1'
+                  nights: '2'
                 },
                 headers: {
                   'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
@@ -73,13 +72,7 @@ function search() {
               }).catch(function (error) {
                   console.error(error);
               });
-              
-              if (window.innerWidth > 900) {
-                  setWidthIn(true)
-              } else {
-                  setWidthIn(false)
-              }
-
+                 
             return data;
           
         } catch (error) {
@@ -127,7 +120,7 @@ function search() {
                    ))}
                   </div>
                </section>
-               <section  id='container2' style={{height:widthIn == true? "1000px" : "400px", width:"100%" }}>
+               <section className='h-[380px] xl:h-[1000px]' id='container2'>
                     <Map  lat={lat} lon={lon} hotels={hotels} />
                </section>
             </main>
