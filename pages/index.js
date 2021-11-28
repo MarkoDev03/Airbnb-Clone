@@ -63,9 +63,9 @@ useEffect(() => {
             <h2 className="text-xl md:text-4xl font-semibold py-0 md:py-7">Live anywhere</h2>
         
         <Swiper  freeMode={true}
-        className='px-20'
+        className='md:px-20'
         slidesPerView={1.1}
-        spaceBetween={10}
+        spaceBetween={0}
        breakpoints={{
         "640": {"slidesPerView": 1.1,"spaceBetween": 10},
         "768": {"slidesPerView":2.1,"spaceBetween": 10},
@@ -102,7 +102,7 @@ useEffect(() => {
         
         <Swiper  className=" " freeMode={true}
         slidesPerView={1}
-        spaceBetween={10}
+        spaceBetween={0}
        breakpoints={{
         "640": {"slidesPerView": 1,"spaceBetween": 10},
         "768": {"slidesPerView":1.6,"spaceBetween": 10},
@@ -114,7 +114,7 @@ useEffect(() => {
       }} 
         >
          {dataDwn?.map((item) => (
-             <SwiperSlide className="mb-3 ml-2">
+             <SwiperSlide className="mb-3 m-2">
                <LastCard 
                 key={item.img}
                 img={item.img}

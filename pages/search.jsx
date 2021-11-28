@@ -87,7 +87,7 @@ function search() {
 }, [location])
 
     return (
-        <div>
+        <div style={{overflowX:'none'}}>
             <Header placeholder={placeHolder} />
            
             <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'>
