@@ -52,8 +52,7 @@ function Map({lon, lat, hotels}) {
                   <Marker
                      longitude={+hotel.longitude}
                      latitude={+hotel.latitude}
-                     offsetTop={-10}
-                     offsetLeft={-20}
+          
                   >
                       <p onClick={() => setSelectedLocation(hotel)} className='cursor-pointer text-2xl z-10'>📍</p>
                   </Marker>

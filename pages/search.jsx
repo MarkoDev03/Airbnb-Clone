@@ -42,15 +42,15 @@ function search() {
                   latitude: data.list[0].coord.lat,
                   longitude: data.list[0].coord.lon,
                   lang: 'en_US',
-                  hotel_class: '1,2,3',
+                  hotel_class: '1,2,3,4,5',
                   limit: '80',
-                  adults: '1',
+                  adults: '2',
                   rooms: '1',
                   child_rm_ages: '7,10',
                   currency: 'USD',
                   zff: '4,6',
                   subcategory: 'hotel,bb,specialty',
-                  nights: '2'
+                  nights: '1'
                 },
                 headers: {
                   'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
@@ -120,7 +120,7 @@ function search() {
                    ))}
                   </div>
                </section>
-               <section className='h-[380px] xl:h-[1000px]' id='container2' style={{width:'100%'}}>
+               <section className='h-[400px] xl:h-[1000px]' id='container2' style={{width:'100%'}}>
                     <Map  lat={lat} lon={lon} hotels={hotels} />
                </section>
             </main>
