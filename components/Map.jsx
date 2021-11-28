@@ -38,12 +38,14 @@ function Map({lon, lat, hotels}) {
         zoom:12,
        })     
     }, [hotels])
+    
 
     return (
         <ReactMapGL
            mapStyle='mapbox://styles/perovicmarko/cktd5g6ig10tk17pp59qqowtd'
            mapboxApiAccessToken={process.env.mapbox_key}
            {...viewport}
+           style={{width:"100%", height:"100%"}}
            onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
           {hotels.map((hotel) => (
