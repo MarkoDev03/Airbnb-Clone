@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 import InfoCard from "../components/InfoCard";
 import Map from "../components/Map";
 import axios from "axios";
+import Head from 'next/head'
 import { useState, useLayoutEffect } from "react";
 
 function search() {
@@ -88,6 +89,13 @@ function search() {
 
     return (
         <div>
+            <Head>
+        <title>Airbnb</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/airbnb.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content='#000000'></meta>
+      </Head>
             <Header placeholder={placeHolder} />
            
             <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'>

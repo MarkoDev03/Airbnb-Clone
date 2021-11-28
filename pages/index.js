@@ -38,7 +38,7 @@ useEffect(() => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="icon" href="/airbnb.png" />
         <link rel="manifest" href="/manifest.json" />
-        `<meta name="theme-color" content='#000000'></meta>
+        <meta name="theme-color" content='#000000'></meta>
       </Head>
 
       <Header></Header>

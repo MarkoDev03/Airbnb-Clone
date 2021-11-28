@@ -46,6 +46,8 @@ function Map({lon, lat, hotels}) {
            mapboxApiAccessToken={process.env.mapbox_key}
            {...viewport}
            style={{width:"100%", height:"100%"}}
+           width={'100%'}
+           height={'100%'}
            onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
           {hotels.map((hotel) => (
