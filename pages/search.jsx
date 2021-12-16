@@ -25,23 +25,19 @@ function search() {
     const getWeatherData = async () => {
         try {
           
-            const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/find', {
-              params: { q:location },
-              headers: {
-                'x-rapidapi-key':'9ba6490420msh35e083a18335c5cp17dac9jsn87d5b3c7254d',
-                'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-              },
-            });
+            const  { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=5b0b77f30d7a29f9e84f4b5bde0b8708`);
+            console.log('https://community-open-weather-map.p.rapidapi.com/weather');
 
-             setLat(data.list[0].coord.lat)
-             setLon(data.list[0].coord.lon)
+             setLat(data.coord.lat)
+             setLon(data.coord.lon)
+       
 
              const options = {
                 method: 'GET',
                 url: 'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng',
                 params: {
-                  latitude: data.list[0].coord.lat,
-                  longitude: data.list[0].coord.lon,
+                  latitude: data.coord.lat,
+                  longitude: data.coord.lon,
                   lang: 'en_US',
                   hotel_class: '1,2,3',
                   limit: '80',
@@ -65,6 +61,7 @@ function search() {
                   response.data.data.forEach(item => {
                       if (item.photo != undefined) {
                             a.push(item)
+                            console.log(item);
                       }
                   });
 
