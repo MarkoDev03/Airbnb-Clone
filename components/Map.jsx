@@ -1,5 +1,5 @@
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
-import { useState, useLayoutEffect } from 'react'
+import { useState, useEffect } from 'react'
 import getCenter from 'geolib/es/getCenter'
 import Rating from '@material-ui/lab/Rating';
 
@@ -20,7 +20,7 @@ function Map({lon, lat, hotels}) {
         zoom:8,
     })
    
-    useLayoutEffect(() => {
+    useEffect(() => {
         const coordinates = hotels.map(result => ({
             longitude:result.longitude,
             latitude:result.latitude

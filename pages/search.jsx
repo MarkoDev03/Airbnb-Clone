@@ -6,7 +6,8 @@ import InfoCard from "../components/InfoCard";
 import Map from "../components/Map";
 import axios from "axios";
 import Head from 'next/head'
-import { useState, useLayoutEffect } from "react";
+import $ from "jquery"
+import { useState, useEffect } from "react";
 
 function search() {
 
@@ -20,69 +21,104 @@ function search() {
     const [lon, setLon] = useState(0)
     const [hotels, setHotels] = useState([])
     const [placeHolder, setPlaceHolder] = useState("");
+    const [list, setList] = useState([]);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
     const getWeatherData = async () => {
         try {
-          
+
             const  { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=5b0b77f30d7a29f9e84f4b5bde0b8708`);
-            console.log('https://community-open-weather-map.p.rapidapi.com/weather');
 
              setLat(data.coord.lat)
              setLon(data.coord.lon)
-       
 
-             const options = {
-                method: 'GET',
-                url: 'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng',
-                params: {
-                  latitude: data.coord.lat,
-                  longitude: data.coord.lon,
-                  lang: 'en_US',
-                  hotel_class: '1,2,3',
-                  limit: '80',
-                  adults: '1',
-                  rooms: '1',
-                  child_rm_ages: '7,10',
-                  currency: 'USD',
-                  zff: '4,6',
-                  subcategory: 'hotel,bb,specialty',
-                  nights: '2'
-                },
-                headers: {
-                  'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
-                  'x-rapidapi-key': '9ba6490420msh35e083a18335c5cp17dac9jsn87d5b3c7254d'
-                }
-              };
-              
-              axios.request(options).then(function (response) {
+             let lat = data.coord.lat
+             let lon = data.coord.lon
+             const localPlaces = await axios.get('https://community-open-weather-map.p.rapidapi.com/find', {
+        params: { lat, lon },
+        headers: {
+          'x-rapidapi-key': "9ba6490420msh35e083a18335c5cp17dac9jsn87d5b3c7254d",
+          'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
+        },
+      })
 
-                  var a = []
-                  response.data.data.forEach(item => {
-                      if (item.photo != undefined) {
-                            a.push(item)
-                            console.log(item);
-                      }
-                  });
+      setList(localPlaces.data.list)
 
-                  setHotels(a)
-            
-              }).catch(function (error) {
-                  console.error(error);
-              });
-                 
-            return data;
-          
+    //   localPlaces.data.list.forEach((listItem) => {
+    //     getHotels(listItem)
+    //   })
+
         } catch (error) {
           console.log(error);
         }
       };
 
+     
+
       getWeatherData()
 
       setPlaceHolder(window.innerWidth > 900 ? location + " |  " + range + " | " +  noOfGuests + " guests" : location)
-      
+
 }, [location])
+
+
+
+  useEffect(() => {
+    const getHotels =  () => {
+       
+    if (list.length > 1) {
+    list.forEach((itemInList) => {
+        const settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": `https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng?latitude=${itemInList.coord.lat}&longitude=${itemInList.coord.lon}`,
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
+                "x-rapidapi-key": "dea56d0affmshbd2be03d197e2fdp1100ecjsn197827d81e5f"
+            }
+        };
+        $.ajax(settings).done(function (response) {
+            let data = response.data.filter((item) => {
+                return item.photo !== undefined
+            })
+            let hotelsGet = []
+
+            if (hotels.length > 0) {
+
+             data.forEach((hotelData) => {
+            hotels.forEach((hotel) => {
+                if (hotel.name !== hotelData.name) {
+                    hotelsGet.push(hotelData)
+                }
+            })
+        })
+
+        console.log(data)
+
+        hotelsGet = hotelsGet.filter(
+            (thing, index, self) =>
+              index ===
+              self.findIndex(
+                (t) => t.name === thing.name
+              )
+          );
+          
+        setHotels(hotelsGet)
+    } else {
+        setHotels(data)
+    }
+
+           
+            console.log(hotelsGet)
+        });
+    })
+}
+ }
+ getHotels()
+  }, [hotels, list]);
+
+
 
     return (
         <div>
@@ -94,10 +130,10 @@ function search() {
         <meta name="theme-color" content='#000000'></meta>
       </Head>
             <Header placeholder={placeHolder} />
-           
+
             <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'>
                <section className='flex-grow pt-4 md:px-6 sm:rounded-t-lg ' id='container1'>
-                   <p className='pl-2 text-base'>300+ stays for - {range} - {noOfGuests} guests</p>
+                   <p className='pl-2 text-base'>{hotels.length} stays for - {range} - {noOfGuests} guests</p>
                    <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {location}</h1>
                    <div className='overflow-auto px-2 md:px-0 pb-2 flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
                        <p className='button'>Cancellation Flexibility</p>
@@ -109,7 +145,7 @@ function search() {
                    </div>
                   <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" >
                   {hotels.map((hotel) => (
-                       <InfoCard  
+                       <InfoCard
                            key={hotel.photo.images.large.url != undefined  ? hotel.photo.images.large.url : ""}
                            img={hotel.photo.images.large.url != undefined ? hotel.photo.images.large.url : ""}
                            location={hotel.ranking}

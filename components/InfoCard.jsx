@@ -8,7 +8,7 @@ function InfoCard({ img, location, title, description, star, price, total , vote
     <div className=' active:scale-105 data-card flex-col md:flex md:flex-row md:items-center py-5 px-3 border-b cursor-pointer hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out first:border-t'>
       <div className="relative h-[250px] md:h-52 md:w-72 flex-grow md:flex-grow-0 md:flex-shrink-0  ">
         
-        <Image src={img} layout="fill" objectFit="cover"  className='rounded-2xl'/>
+        <img src={img} layout="fill" objectFit="cover"  className='rounded-2xl cart-img' loading="lazy" />
       </div>
       <div className='flex flex-col flex-grow pl-1 md:pl-5 pt-4 md:pt-0'>
              <div className='flex justify-between'>
