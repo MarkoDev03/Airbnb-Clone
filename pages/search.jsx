@@ -35,39 +35,96 @@ function search() {
              let lat = data.coord.lat
              let lon = data.coord.lon
              const localPlaces = await axios.get('https://community-open-weather-map.p.rapidapi.com/find', {
-        params: { lat, lon },
-        headers: {
-          'x-rapidapi-key': "9ba6490420msh35e083a18335c5cp17dac9jsn87d5b3c7254d",
-          'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-        },
-      })
+                params: { lat, lon },
+                headers: {
+                   'x-rapidapi-key': "9ba6490420msh35e083a18335c5cp17dac9jsn87d5b3c7254d",
+                   'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
+                },
+            })
 
-      setList(localPlaces.data.list)
+            //2f3da6e1f8msh0e218d3c91c9bfep1c2e3ajsnfa590390a0c4
+            //98a2512d5cmsh99bf0098efeb84dp16ab63jsn48c57a347928
+            //7f4fd1a717msh403ad75a852159dp1ea7e8jsn2736aeb92d7b
+            //c8c1d01a2emsh7b5c3a45fdce500p13cb2bjsne7743f13805d
+            //a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052
 
-    //   localPlaces.data.list.forEach((listItem) => {
-    //     getHotels(listItem)
-    //   })
+            //dea56d0affmshbd2be03d197e2fdp1100ecjsn197827d81e5f -- 429 bandwidth
+            if (localPlaces.data.list.length > 0) {
+            const places1 = await axios.get('https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng', {
+            params: {latitude: localPlaces.data.list[0].coord.lat, longitude:localPlaces.data.list[0].coord.lon},
+            headers: {
+              'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
+              'x-rapidapi-key': '2f3da6e1f8msh0e218d3c91c9bfep1c2e3ajsnfa590390a0c4'
+            }
+            })
+
+            const places2 = await axios.get('https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng', {
+                params: {latitude: localPlaces.data.list[1].coord.lat, longitude:localPlaces.data.list[1].coord.lon},
+                headers: {
+                  'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
+                  'x-rapidapi-key': '98a2512d5cmsh99bf0098efeb84dp16ab63jsn48c57a347928'
+                }
+            })
+
+            const places3 = await axios.get('https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng', {
+                params: {latitude: localPlaces.data.list[2].coord.lat, longitude:localPlaces.data.list[2].coord.lon},
+                headers: {
+                  'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
+                  'x-rapidapi-key': '7f4fd1a717msh403ad75a852159dp1ea7e8jsn2736aeb92d7b'
+                }
+            })
+
+            const places4 = await axios.get('https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng', {
+                params: {latitude: localPlaces.data.list[3].coord.lat, longitude:localPlaces.data.list[3].coord.lon},
+                headers: {
+                  'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
+                  'x-rapidapi-key': 'c8c1d01a2emsh7b5c3a45fdce500p13cb2bjsne7743f13805d'
+                }
+            })
+
+            const places5 = await axios.get('https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng', {
+                params: {latitude: localPlaces.data.list[4].coord.lat, longitude:localPlaces.data.list[4].coord.lon},
+                headers: {
+                  'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
+                  'x-rapidapi-key': 'a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052'
+                }
+            })
+
+            let results = [
+                ...places1.data.data,
+                ...places2.data.data,
+                ...places3.data.data,
+                ...places4.data.data,
+                ...places5.data.data,
+            ]
+
+            results = results.filter(
+                (thing, index, self) =>
+                  index ===
+                  self.findIndex(
+                    (t) => t.name === thing.name
+                  )
+              );
+
+              let selected = []
+
+              results.forEach((hotel) => {
+                  if (hotel.photo !== undefined) {
+                      selected.push(hotel)
+                  }
+              })
+
+
+              setHotels(selected)
+            }
+     
 
         } catch (error) {
           console.log(error);
         }
       };
 
-     
-
-      getWeatherData()
-
-      setPlaceHolder(window.innerWidth > 900 ? location + " |  " + range + " | " +  noOfGuests + " guests" : location)
-
-}, [location])
-
-
-
-  useEffect(() => {
-    const getHotels =  () => {
-       
-    if (list.length > 1) {
-    list.forEach((itemInList) => {
+      const getHotels =  (itemInList) => {      
         const settings = {
             "async": true,
             "crossDomain": true,
@@ -75,48 +132,23 @@ function search() {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
-                "x-rapidapi-key": "dea56d0affmshbd2be03d197e2fdp1100ecjsn197827d81e5f"
+                "x-rapidapi-key": "a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052"
             }
         };
+        
         $.ajax(settings).done(function (response) {
             let data = response.data.filter((item) => {
                 return item.photo !== undefined
             })
-            let hotelsGet = []
-
-            if (hotels.length > 0) {
-
-             data.forEach((hotelData) => {
-            hotels.forEach((hotel) => {
-                if (hotel.name !== hotelData.name) {
-                    hotelsGet.push(hotelData)
-                }
-            })
-        })
-
-        console.log(data)
-
-        hotelsGet = hotelsGet.filter(
-            (thing, index, self) =>
-              index ===
-              self.findIndex(
-                (t) => t.name === thing.name
-              )
-          );
-          
-        setHotels(hotelsGet)
-    } else {
-        setHotels(data)
-    }
-
-           
-            console.log(hotelsGet)
+            setHotels(data)
         });
-    })
-}
  }
- getHotels()
-  }, [hotels, list]);
+
+      getWeatherData()
+
+      setPlaceHolder(window.innerWidth > 900 ? location + " |  " + range + " | " +  noOfGuests + " guests" : location)
+
+}, [location])
 
 
 
