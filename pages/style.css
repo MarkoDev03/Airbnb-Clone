@@ -35,7 +35,7 @@ progress {
   
 progress::-webkit-progress-value {
     -webkit-appearance: none;
-    background: darkgoldenrod;
+    background: rgb(255, 183, 2);
     border-radius: 10px;
   }
   

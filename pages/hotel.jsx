@@ -7,7 +7,7 @@ import { useLayoutEffect } from 'react'
 import Head from 'next/head'
 import Rating from '@material-ui/lab/Rating';
 import CardReserve from '../components/CardReserve';
-import { BsInfoCircle, BsLink, BsPencil, BsCheck, BsCheckAll } from "react-icons/bs";
+import { BsInfoCircle, BsLink, BsPencil, BsCheck, BsCheckAll, BsBuilding, BsBarChart, BsFlag, BsClock, BsCardText } from "react-icons/bs";
 import Map from '../components/Map';
 import { format } from 'date-fns'
 import Footer from '../components/Footer';
@@ -34,7 +34,11 @@ function hotel() {
     const [startTime, setStartTime] = useState("")
     const [endTime, setEndTime] = useState("")
 
-    const [maxrate, setMaxRate] = useState(0)
+    const [category, setCategory] = useState("")
+    const [isClosed, setIsClosed] = useState(false)
+    const [web_url, setWebUrl] = useState("")
+    const [rankingDesc, setRankingDesc] = useState("")
+    const [hotelClassAttribution, setHotelClassAttribution] = useState("")
     const [ratings, setRatings] = useState([])
 
     useLayoutEffect(() => {
@@ -60,9 +64,15 @@ function hotel() {
 
               //amenities
               setAmenities(response.data.data[0].amenities)
+              setIsClosed(response.data.data[0].is_closed)
               setDescription(response.data.data[0].description)
               setWebsite(response.data.data[0].website)
+              setWebUrl(response.data.data[0].web_url)
               setWrite_review(response.data.data[0].write_review)
+              setRankingDesc(response.data.data[0].ranking)
+
+              setCategory(response.data.data[0].category.name)
+              setHotelClassAttribution(response.data.data[0].hotel_class_attribution)
 
               var rankingPos1 = [
                   {value:response.data.data[0].ranking_position, name:" Ranking position"},
@@ -70,14 +80,6 @@ function hotel() {
                   {value: response.data.data[0].hotel_class, name:"Hotel class"},
                  
               ]
-
-              setMaxRate(
-                  +response.data.data[0].rating_histogram.count_1 + 
-                  +response.data.data[0].rating_histogram.count_2 + 
-                  +response.data.data[0].rating_histogram.count_3 + 
-                  +response.data.data[0].rating_histogram.count_4 + 
-                  +response.data.data[0].rating_histogram.count_5
-              )
 
               let maxValue =  +response.data.data[0].rating_histogram.count_1 + 
               +response.data.data[0].rating_histogram.count_2 + 
@@ -189,17 +191,17 @@ function hotel() {
       </Head>
             <Header />
             <article className='max-w-7xl py-3 flex flex-col justify-start mx-auto'>
-           <div className='w-100 flex justify-between align-middle py-2 px-2'>
+           <div className='w-100 flex justify-start lg:justify-between items-start lg:items-center py-2 px-2 flex-col lg:flex-row'>
                <div>
-                   <h1 className='font-semibold text-xl'>{name}</h1>
-                   <h3 className='text-gray-600'>{ranking}</h3>
+                   <h1 className='font-semibold text-xl break-all'>{name}</h1>
+                   <h3 className='text-gray-600 break-all'>{ranking}</h3>
               </div>
-               <div className='flex justify-end flex-col items-end'>
+               <div className='flex justify-end flex-col items-start lg:items-end'>
                      <p className='text-gray-500'>{votecount} reviews &nbsp;</p>
                      <Rating name="read-only" value={Number(rating)} readOnly size='small' />
                </div>
            </div>
-            <div className="relative h-96 min-w-[300px] px-2 image-banner mx-2">
+            <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] min-w-[300px] px-2 image-banner mx-2">
            {
                image && (
                 <Image 
@@ -245,7 +247,7 @@ function hotel() {
                      </div>
                     {
                         website && (
-                            <a href={website} target="_blank" className='text-blue-500'>{website}</a>
+                            <a href={website} target="_blank" className='text-blue-500 break-all'>{website}</a>
                         )
                     }
                   </div>
@@ -258,7 +260,19 @@ function hotel() {
                      </div>
                     {
                         write_review && (
-                            <a href={write_review} target="_blank" className='text-blue-500'>{write_review}</a>
+                            <a href={write_review} target="_blank" className='text-blue-500 break-all'>{write_review}</a>
+                        )
+                    }
+                  </div>
+
+                  <div className='className="flex justify-start items-center px-2 py-2 mr-2 mt-1' style={{width:"100%"}}>
+                     <div className='flex items-center justify-start'>
+                        <BsFlag className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />
+                         <h1 className='text-xl font-semibold'>Web url - Trip Advisor</h1>
+                     </div>
+                    {
+                        write_review && (
+                            <a href={web_url} target="_blank" className='text-blue-500 break-all'>{web_url}</a>
                         )
                     }
                   </div>
@@ -272,6 +286,45 @@ function hotel() {
                   </div>
 
                   <div className='className="flex justify-start items-center px-2 py-2 mr-2 mt-1' style={{width:"100%"}}>
+                     <div className='flex items-center justify-start'>
+                        <BsClock className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />
+                         <h1 className='text-xl font-semibold'>Working</h1>
+                     </div>
+                   <span className='text-gray-500'>{isClosed ? "Closed" : "Open"}</span>
+                  </div>
+
+                  <div className='className="flex justify-start items-center px-2 py-2 mr-2 mt-1' style={{width:"100%"}}>
+                     <div className='flex items-center justify-start'>
+                        <BsBuilding className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />
+                         <h1 className='text-xl font-semibold'>Category</h1>
+                     </div>
+                   <span className='text-gray-500'>{category}</span>
+                  </div>
+
+                  <div className='className="flex justify-start items-center px-2 py-2 mr-2 mt-1' style={{width:"100%"}}>
+                     <div className='flex items-center justify-start'>
+                        <BsCardText className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />
+                         <h1 className='text-xl font-semibold'>Ranking description</h1>
+                     </div>
+                   <span className='text-gray-500'>{rankingDesc}</span>
+                  </div>
+             
+             
+                  
+                  <div className='className="flex justify-start items-center px-2 py-2 mr-2 mt-1' style={{width:"100%"}}>
+                     <div className='flex items-center justify-start'>
+                        <BsBarChart className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />
+                         <h1 className='text-xl font-semibold'>Hotel class attribution</h1>
+                     </div>
+                   <span className='text-gray-500'>{hotelClassAttribution}</span>
+                  </div>
+                  </div>
+
+                  <CardReserve rating={rating} price={price} votecount={votecount} className='flex-grow' start={startTime} end={endTime}  noOfGuests={noOfGuests} />
+
+             </div>
+
+             <div className='flex flex-col justify-start items-start px-2 py-2 mr-2 mt-1 border-t-2 border-gray-200' style={{width:"100%"}}>
                      <div className='flex items-center justify-start'>
                         <BsCheckAll className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />
                          <h1 className='text-xl font-semibold'>Amenities</h1>
@@ -291,25 +344,14 @@ function hotel() {
                           </div>
                         )
                     }
-                    <div style={{width:"100%"}} className='py-3'>     
-                    </div>
+                    <div style={{width:"100%"}} className='py-3'></div>
                   </div>
-
-
-                  </div>
-
-                  <CardReserve rating={rating} price={price} votecount={votecount} className='flex-grow' start={startTime} end={endTime}  noOfGuests={noOfGuests} />
-
-             </div>
-
-
-
 
              <div className='flex justify-start items-start flex-col border-t-2 border-gray-200 py-2 pt-5 my-2 px-2' style={{width:"100%"}}>
               <div className='flex justify-start items-center my-2' style={{width:"100%"}}>
                   <StarIcon className="h-7 w-7" style={{color:"#FE595E", fill:"#FE595E"}} />
                   <span className='text-xl font-semibold'>{rating}</span>
-                  <span className='ml-1 text-gray-700 text-xl'>{comments.length} reviews</span>
+                  <span className='ml-1 text-gray-700 text-xl'>{votecount} reviews</span>
               </div>
              
           
@@ -383,10 +425,10 @@ function hotel() {
                             <div className='flex justify-start items-center' style={{width:"100%"}}>
                                  <img src={comment.user.avatar.large.url} alt="" className='w-[80px] h-[80px] rounded-full mr-2' />
                                  <div className='flex justify-start items-start flex-col'>
-                                       <span className='text-lg font-semibold'>{comment.user.username}</span>
+                                       <span className='text-lg font-semibold break-all'>{comment.user.username}</span>
                                      <div className='flex justify-start items-center'>
                                         <HiLocationMarker className="h-3 w-3 mr-1" />
-                                       <span className='text-base text-gray-500'>{comment.user.user_location.name}</span>
+                                       <span className='text-base text-gray-500 break-all'>{comment.user.user_location.name}</span>
                                      </div>
                                  </div>
                             </div>
