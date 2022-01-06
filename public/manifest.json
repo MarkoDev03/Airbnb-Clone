@@ -2,8 +2,8 @@
     "name":"Airbnb",
     "short_name":"Airbnb",
     "start_url":".",
-    "background_color":"#ffffff",
-    "theme_color":"#000000",
+    "background_color":"#FFFFFF",
+    "theme_color":"#FFFFFF",
     "display":"standalone",
     "icons":[
         {
