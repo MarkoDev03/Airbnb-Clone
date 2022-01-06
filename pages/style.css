@@ -7,6 +7,64 @@
 
 .cart-img{
     width: 100%;
-  
     height: 100%;
+}
+
+.desc-width{
+    width: calc(100% - 340px);
+}
+
+
+.stars{
+    width: 55%;
+}
+
+.blocks{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: masonry
+
+}
+
+progress {
+    width: 50%;
+    -webkit-appearance: none;
+    margin-inline: 8px;
+    height: 8px;
+  }
+  
+progress::-webkit-progress-value {
+    -webkit-appearance: none;
+    background: darkgoldenrod;
+    border-radius: 10px;
+  }
+  
+  progress::-webkit-progress-bar {
+    -webkit-appearance: none;
+    background: #b9b9b9 !important;
+    border-radius: 10px;
+    height: 10px !important;
+    border: none;
+    outline: none;
+  }
+
+  @media only screen and (max-width:1024px) {
+    .desc-width{
+        width: 100%;
+    }
+    .card-box{
+        width: 100%;
+    }
+    .stars{
+        width:100%;
+    }
+    progress {
+        width: 70%;
+        -webkit-appearance: none;
+        margin-inline: 8px;
+        height: 8px;
+      }
+      .image-banner{
+         
+      }
 }

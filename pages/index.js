@@ -42,7 +42,7 @@ useEffect(() => {
       </Head>
 
       <Header></Header>
-      <Banner></Banner>
+      <Banner src="https://links.papareact.com/0fm"></Banner>
 
       <main className="max-w-7xl mx-auto px-8 sm:px-16">
         <section className="pt-6">

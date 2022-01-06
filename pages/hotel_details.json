@@ -1,0 +1,401 @@
+{
+    "location_id": "1383585",
+    "name": "Ambasador Hotel Nis",
+    "latitude": "43.321056",
+    "longitude": "21.896221",
+    "num_reviews": "40",
+    "timezone": "Europe/Belgrade",
+    "location_string": "Nis, Central Serbia",
+    "photo": {
+        "images": {
+            "small": {
+                "width": "150",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-l/18/bf/b8/3d/ambasador-hotel-nis.jpg",
+                "height": "150"
+            },
+            "thumbnail": {
+                "width": "50",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-t/18/bf/b8/3d/ambasador-hotel-nis.jpg",
+                "height": "50"
+            },
+            "original": {
+                "width": "1280",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/18/bf/b8/3d/ambasador-hotel-nis.jpg",
+                "height": "857"
+            },
+            "large": {
+                "width": "1024",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-w/18/bf/b8/3d/ambasador-hotel-nis.jpg",
+                "height": "686"
+            },
+            "medium": {
+                "width": "550",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-s/18/bf/b8/3d/ambasador-hotel-nis.jpg",
+                "height": "368"
+            }
+        },
+        "is_blessed": true,
+        "uploaded_date": "2019-08-12T09:32:05-0400",
+        "caption": "",
+        "id": "415217725",
+        "helpful_votes": "0",
+        "published_date": "2019-08-12T09:32:05-0400",
+        "user": {
+            "user_id": null,
+            "member_id": "0",
+            "type": "user"
+        }
+    },
+    "awards": [],
+    "preferred_map_engine": "default",
+    "raw_ranking": "3.3855817317962646",
+    "ranking_geo": "Nis",
+    "ranking_geo_id": "295382",
+    "ranking_position": "3",
+    "ranking_denominator": "72",
+    "ranking_category": "bb",
+    "ranking": "#3 of 72 B&Bs / Inns in Nis",
+    "subcategory_type": "small_hotel",
+    "subcategory_type_label": "Small Hotel",
+    "distance": null,
+    "distance_string": null,
+    "bearing": null,
+    "rating": "4.5",
+    "is_closed": false,
+    "is_long_closed": false,
+    "price_level": "$",
+    "price": "$59 - $113",
+    "hotel_class": "3.0",
+    "hotel_class_attribution": "This property is classified according to Giata.",
+    "business_listings": {
+        "desktop_contacts": [],
+        "mobile_contacts": []
+    },
+    "special_offers": {
+        "desktop": [],
+        "mobile": []
+    },
+    "listing_key": "db2315d1-3a9f-456a-88e7-cbb0e2e5c970",
+    "description": "See why so many travelers make Ambasador Hotel Nis their small hotel of choice when visiting Nis. Providing an ideal mix of value, comfort and convenience, it offers an array of amenities designed for travelers like you.\nNearby landmarks such as Hram Svetog Pantelejmona (0.9 mi) and Skull Tower (1.4 mi) make Ambasador Hotel Nis a great place to stay when visiting Nis.\nThe rooms offer air conditioning, allowing you to rest and refresh with ease.\nAmbasador Hotel Nis features room service. In addition, as a valued Ambasador Hotel Nis guest, you can enjoy an on-site restaurant that is available on-site.\nDuring your visit, be sure to check out a popular Nis gyros restaurant such as GYROS4U, which is a short distance from Ambasador Hotel Nis.\nShould time allow, Red Cross Nazi Concentration Camp, Nis Fortress, and Monument to the Liberators of Nis are some popular attractions that are within walking distance.\nAt Ambasador Hotel Nis, your comfort and satisfaction come first, and they look forward to welcoming you to Nis.\n",
+    "web_url": "https://www.tripadvisor.com/Hotel_Review-g295382-d1383585-Reviews-Ambasador_Hotel_Nis-Nis_Central_Serbia.html",
+    "write_review": "https://www.tripadvisor.com/UserReview-g295382-d1383585-Ambasador_Hotel_Nis-Nis_Central_Serbia.html",
+    "ancestors": [
+        {
+            "subcategory": [
+                {
+                    "key": "city",
+                    "name": "City"
+                }
+            ],
+            "name": "Nis",
+            "abbrv": null,
+            "location_id": "295382"
+        },
+        {
+            "subcategory": [
+                {
+                    "key": "region",
+                    "name": "Region"
+                }
+            ],
+            "name": "Central Serbia",
+            "abbrv": null,
+            "location_id": "2462645"
+        },
+        {
+            "subcategory": [
+                {
+                    "key": "country",
+                    "name": "Country"
+                }
+            ],
+            "name": "Serbia",
+            "abbrv": null,
+            "location_id": "294471"
+        }
+    ],
+    "category": {
+        "key": "hotel",
+        "name": "Hotel"
+    },
+    "subcategory": [
+        {
+            "key": "bb",
+            "name": "Bed and Breakfast"
+        }
+    ],
+    "parent_display_name": "Nis",
+    "guide_count": "0",
+    "is_jfy_enabled": false,
+    "nearest_metro_station": [],
+    "phone": "+381 18 505018",
+    "website": "https://ambasadorhotel.com/",
+    "address_obj": {
+        "street1": "Trg Kralja Milana 4",
+        "street2": "",
+        "city": "Nis",
+        "state": null,
+        "country": "Serbia",
+        "postalcode": "18000"
+    },
+    "address": "Trg Kralja Milana 4, Nis 18000 Serbia",
+    "local_name": "Ambasador Hotel Nis",
+    "local_address": "",
+    "local_lang_code": "sr",
+    "is_candidate_for_contact_info_suppression": false,
+    "amenities": [
+        {
+            "key": "restaurant",
+            "name": "Restaurant"
+        },
+        {
+            "key": "high_speed_internet_in_room",
+            "name": "Internet"
+        },
+        {
+            "key": "Free Internet",
+            "name": "Free Internet"
+        },
+        {
+            "key": "free_parking",
+            "name": "Free parking"
+        },
+        {
+            "key": "bar_lounge",
+            "name": "Bar/Lounge"
+        },
+        {
+            "key": "spa",
+            "name": "Spa"
+        },
+        {
+            "key": "free_wireless_internet_in_room",
+            "name": "Free Wifi"
+        },
+        {
+            "key": "Non-Smoking Rooms",
+            "name": "Non-smoking rooms"
+        },
+        {
+            "key": "Safe",
+            "name": "Safe"
+        },
+        {
+            "key": "Flatscreen TV",
+            "name": "Flatscreen TV"
+        },
+        {
+            "key": "Bath / Shower",
+            "name": "Bath / Shower"
+        },
+        {
+            "key": "English - Amenities",
+            "name": "English"
+        },
+        {
+            "key": "24-Hour Front Desk",
+            "name": "24-Hour Front Desk"
+        },
+        {
+            "key": "Kids Activities",
+            "name": "Kids Activities"
+        },
+        {
+            "key": "room_service",
+            "name": "Room service"
+        },
+        {
+            "key": "Dry Cleaning",
+            "name": "Dry Cleaning"
+        },
+        {
+            "key": "Laundry Service",
+            "name": "Laundry Service"
+        },
+        {
+            "key": "air_conditioning",
+            "name": "Air conditioning"
+        },
+        {
+            "key": "Minibar",
+            "name": "Minibar"
+        }
+    ],
+    "photo_count": "86",
+    "has_review_draft": false,
+    "has_panoramic_photos": false,
+    "rating_histogram": {
+        "count_1": "4",
+        "count_2": "0",
+        "count_3": "1",
+        "count_4": "5",
+        "count_5": "30"
+    },
+    "room_tips": [
+        {
+            "user": {
+                "user_id": "66204FAAEF2B68C95F72E891D39C2FBF",
+                "type": "user",
+                "first_name": null,
+                "last_initial": null,
+                "name": null,
+                "member_id": "0",
+                "username": "adamc313",
+                "user_location": {
+                    "name": "Chatham, United Kingdom",
+                    "id": "186312"
+                },
+                "avatar": {
+                    "small": {
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/df/2b/default-avatar-2020-39.jpg"
+                    },
+                    "large": {
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/df/2b/default-avatar-2020-39.jpg"
+                    }
+                },
+                "link": "https://www.tripadvisor.com/MemberProfile-a_uid.66204FAAEF2B68C95F72E891D39C2FBF",
+                "points": "0",
+                "created_time": "2014-10-21T18:14:12-0400",
+                "locale": "en_UK"
+            },
+            "type": "room_tip",
+            "text": "Make sure you set the house keeping setting on air con system. Or they won’t come and clean the room.",
+            "rating": "4",
+            "review_id": "790069709",
+            "id": "790069709",
+            "created_time": "2021-05-27T03:01:05-04:00"
+        },
+        {
+            "user": {
+                "user_id": "BA4BB3BAC50E0915CB8D9726C0724E1F",
+                "type": "user",
+                "first_name": null,
+                "last_initial": null,
+                "name": null,
+                "member_id": "0",
+                "username": "mapandcamera",
+                "user_location": {
+                    "name": "Sofia, Bulgaria",
+                    "id": "294452"
+                },
+                "avatar": {
+                    "small": {
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-t/11/ef/48/b2/airamdol.jpg"
+                    },
+                    "large": {
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-f/11/ef/48/b2/airamdol.jpg"
+                    }
+                },
+                "link": "https://www.tripadvisor.com/MemberProfile-a_uid.BA4BB3BAC50E0915CB8D9726C0724E1F",
+                "points": "0",
+                "created_time": "2008-10-06T09:21:31-0400",
+                "locale": "en_US"
+            },
+            "type": "room_tip",
+            "text": "Corner suites ending with 5 have the best view. The higer the floor, the better the view.",
+            "rating": "5",
+            "review_id": "783054766",
+            "id": "783054766",
+            "created_time": "2021-02-17T04:01:01-05:00"
+        },
+        {
+            "user": {
+                "user_id": "4F05E9855AD67252CB4EC4AAF123608B",
+                "type": "user",
+                "first_name": null,
+                "last_initial": null,
+                "name": null,
+                "member_id": "0",
+                "username": "SkeeterFriend",
+                "user_location": {
+                    "name": "Boston",
+                    "id": null
+                },
+                "avatar": {
+                    "small": {
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e8/ea/default-avatar-2020-63.jpg"
+                    },
+                    "large": {
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e8/ea/default-avatar-2020-63.jpg"
+                    }
+                },
+                "link": "https://www.tripadvisor.com/MemberProfile-a_uid.4F05E9855AD67252CB4EC4AAF123608B",
+                "points": "0",
+                "created_time": "2006-01-29T00:00:00-0500",
+                "locale": "en_US"
+            },
+            "type": "room_tip",
+            "text": "Ask for a higher floor for an expansive view.",
+            "rating": "5",
+            "review_id": "759626572",
+            "id": "759626572",
+            "created_time": "2020-07-11T05:52:38-04:00"
+        },
+        {
+            "user": {
+                "user_id": "53A290859835BCB9C65DF96C8C35C9A2",
+                "type": "user",
+                "first_name": null,
+                "last_initial": null,
+                "name": null,
+                "member_id": "0",
+                "username": "sacarad",
+                "user_location": {
+                    "name": "Nea Kallikratia, Greece",
+                    "id": "667145"
+                },
+                "avatar": {
+                    "small": {
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-t/01/2e/70/89/avatar010.jpg"
+                    },
+                    "large": {
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-l/01/2e/70/89/avatar010.jpg"
+                    }
+                },
+                "link": "https://www.tripadvisor.com/MemberProfile-a_uid.53A290859835BCB9C65DF96C8C35C9A2",
+                "points": "0",
+                "created_time": "2011-04-05T09:10:56-0400",
+                "locale": "en_US"
+            },
+            "type": "room_tip",
+            "text": "10th floor had great view",
+            "rating": "5",
+            "review_id": "735519912",
+            "id": "735519912",
+            "created_time": "2019-12-29T23:32:52-05:00"
+        },
+        {
+            "user": {
+                "user_id": "54EBBD4CF11B592FAE76448227F0278F",
+                "type": "user",
+                "first_name": null,
+                "last_initial": null,
+                "name": null,
+                "member_id": "0",
+                "username": "Ogman",
+                "user_location": {
+                    "name": "Melbourne, Australia",
+                    "id": "255100"
+                },
+                "avatar": {
+                    "small": {
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-t/14/20/86/00/ogman.jpg"
+                    },
+                    "large": {
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-f/14/20/86/00/ogman.jpg"
+                    }
+                },
+                "link": "https://www.tripadvisor.com/MemberProfile-a_uid.54EBBD4CF11B592FAE76448227F0278F",
+                "points": "0",
+                "created_time": "2006-11-05T20:52:06-0500",
+                "locale": "en_US"
+            },
+            "type": "room_tip",
+            "text": "ask for an upgrade to suite if available - worth paying for!",
+            "rating": "5",
+            "review_id": "710706285",
+            "id": "710706285",
+            "created_time": "2019-09-17T18:03:44-04:00"
+        }
+    ]
+}

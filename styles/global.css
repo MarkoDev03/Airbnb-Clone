@@ -4,6 +4,9 @@
     .button {
        @apply px-4 py-2 border rounded-full cursor-pointer hover:shadow-lg active:scale-95 active:bg-gray-100 transition transform duration-100 ease-out;
     } 
+    .amenitie {
+        @apply px-2 py-1 pr-4 lg:px-4 lg:py-2 border rounded-full cursor-pointer hover:shadow-sm active:scale-95 active:bg-gray-100 transition transform duration-100 ease-out my-1 mx-2 inline-flex; 
+    }
 }
 
 html, * {

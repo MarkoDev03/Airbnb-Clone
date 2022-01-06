@@ -45,7 +45,7 @@ function search() {
             //2f3da6e1f8msh0e218d3c91c9bfep1c2e3ajsnfa590390a0c4
             //98a2512d5cmsh99bf0098efeb84dp16ab63jsn48c57a347928
             //7f4fd1a717msh403ad75a852159dp1ea7e8jsn2736aeb92d7b
-            //c8c1d01a2emsh7b5c3a45fdce500p13cb2bjsne7743f13805d
+            //c8c1d01a2emsh7b5c3a45fdce500p13cb2bjsne7743f13805d --429
             //a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052
 
             //dea56d0affmshbd2be03d197e2fdp1100ecjsn197827d81e5f -- 429 bandwidth
@@ -78,7 +78,7 @@ function search() {
                 params: {latitude: localPlaces.data.list[3].coord.lat, longitude:localPlaces.data.list[3].coord.lon},
                 headers: {
                   'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
-                  'x-rapidapi-key': 'c8c1d01a2emsh7b5c3a45fdce500p13cb2bjsne7743f13805d'
+                  'x-rapidapi-key': 'a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052'
                 }
             })
 
@@ -116,6 +116,7 @@ function search() {
 
 
               setHotels(selected)
+              console.log(selected)
             }
      
 
@@ -178,6 +179,7 @@ function search() {
                   <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" >
                   {hotels.map((hotel) => (
                        <InfoCard
+                           data={hotel}
                            key={hotel.photo.images.large.url != undefined  ? hotel.photo.images.large.url : ""}
                            img={hotel.photo.images.large.url != undefined ? hotel.photo.images.large.url : ""}
                            location={hotel.ranking}
@@ -189,11 +191,14 @@ function search() {
                            votecount={hotel.num_reviews}
                            range={range}
                            distance={Math.round(hotel.distance, 1)}
+                           startDate={startDate}
+                           endDate={endDate}
+                           noOfGuests={noOfGuests}
                        />
                    ))}
                   </div>
                </section>
-               <section className='h-[380px] xl:h-[1000px]' id='container2'>
+               <section className='h-[450px] xl:h-[1000px]' id='container2'>
                     <Map  lat={lat} lon={lon} hotels={hotels} />
                </section>
             </main>

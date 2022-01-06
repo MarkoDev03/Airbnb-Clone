@@ -1,0 +1,82 @@
+{
+    "location_id": "1383585",
+    "name": "Ambasador Hotel Nis",
+    "latitude": "43.321056",
+    "longitude": "21.896221",
+    "num_reviews": "40",
+    "timezone": "Europe/Belgrade",
+    "location_string": "Nis, Central Serbia",
+    "photo": {
+        "images": {
+            "small": {
+                "width": "150",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-l/18/bf/b8/3d/ambasador-hotel-nis.jpg",
+                "height": "150"
+            },
+            "thumbnail": {
+                "width": "50",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-t/18/bf/b8/3d/ambasador-hotel-nis.jpg",
+                "height": "50"
+            },
+            "original": {
+                "width": "4000",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/18/bf/b8/3d/ambasador-hotel-nis.jpg",
+                "height": "2679"
+            },
+            "large": {
+                "width": "550",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-s/18/bf/b8/3d/ambasador-hotel-nis.jpg",
+                "height": "368"
+            },
+            "medium": {
+                "width": "250",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-f/18/bf/b8/3d/ambasador-hotel-nis.jpg",
+                "height": "167"
+            }
+        },
+        "is_blessed": true,
+        "uploaded_date": "2019-08-12T09:32:05-0400",
+        "caption": "",
+        "id": "415217725",
+        "helpful_votes": "0",
+        "published_date": "2019-08-12T09:32:05-0400",
+        "user": {
+            "user_id": null,
+            "member_id": "0",
+            "type": "user"
+        }
+    },
+    "awards": [],
+    "preferred_map_engine": "default",
+    "autobroaden_type": "category_integrated",
+    "autobroaden_label": "Nis Places to Stay",
+    "raw_ranking": "3.385669708251953",
+    "ranking_geo": "Nis",
+    "ranking_geo_id": "295382",
+    "ranking_position": "2",
+    "ranking_denominator": "164",
+    "ranking_category": "bb",
+    "ranking": "#2 Best Value of 164 places to stay in Nis",
+    "subcategory_type": "small_hotel",
+    "subcategory_type_label": "Small Hotel",
+    "distance": "0.4363086814653347",
+    "distance_string": null,
+    "bearing": "southwest",
+    "rating": "4.5",
+    "is_closed": false,
+    "is_long_closed": false,
+    "price_level": "$",
+    "price": "$59 - $113",
+    "hotel_class": "3.0",
+    "hotel_class_attribution": "This property is classified according to Giata.",
+    "business_listings": {
+        "desktop_contacts": [],
+        "mobile_contacts": []
+    },
+    "special_offers": {
+        "desktop": [],
+        "mobile": []
+    },
+    "listing_key": "cd1dfaf1-e3d6-4dbc-842e-8726f3b3c75a"
+}
+
