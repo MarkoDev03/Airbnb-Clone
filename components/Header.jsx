@@ -6,11 +6,13 @@ import {
   UserIcon,
   MenuIcon,
 } from "@heroicons/react/solid";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import "react-date-range/dist/styles.css"; 
 import "react-date-range/dist/theme/default.css"; 
 import { DateRangePicker } from "react-date-range";
 import { useRouter } from 'next/dist/client/router'
+
+export const LocationContext = createContext()
 
 function Header({ placeholder }) {
   const [searchInput, setSearchInput] = useState("");
@@ -40,7 +42,7 @@ function Header({ placeholder }) {
      router.push({
        pathname:'/search',
        query: {
-          location:searchInput,
+          location:encodeURIComponent(searchInput),
           startDate:startDate.toISOString(),
           endDate:endDate.toISOString(),
           noOfGuests:noOfGuests
@@ -115,6 +117,7 @@ function Header({ placeholder }) {
           </div>
         </div>
       )}
+
     </header>
   );
 }

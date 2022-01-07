@@ -10,8 +10,8 @@ function LastCard({img, title, description}) {
                   className="rounded-xl"
                />
             </div>
-            <h3 className="text-2xl mt-3">{title}</h3>
-            <p className="text-xs md:text-xl text-gray-400">{description}</p>
+            <h3 className="text-xl lg:text-xl mt-3">{title}</h3>
+            <p className="text-xs md:text-lg text-gray-400">{description}</p>
         </div>
     )
 }

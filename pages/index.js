@@ -8,14 +8,28 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import LargeCard from "../components/LargeCard";
 import LastCard from "../components/LastCard";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
+import TwoCards from "../components/TwoCards";
+
 
 export default function Home({ exploreData, cardsData }) {
 
   var dataDwn = [
-    {img:"https://a0.muscache.com/im/pictures/ad109d56-2421-40cd-98e6-e114160dc85b.jpg?im_w=720",title:"Experiences",desc:"Find unforgettable activities nearby."},
-    {img:"https://a0.muscache.com/im/pictures/0ce799cb-7553-4369-be9e-d0011e0ef636.jpg?im_w=720",title:"Online experiences",desc:"Live interactive activities led by the hosts."},
-    {img:"https://a0.muscache.com/im/pictures/f51f70fb-93b7-4974-86e8-1195b64f1353.jpg?im_w=720",title:"Olympians and Paralympians",desc:"Online activities organized by athletes."},
+    {
+       img:"https://a0.muscache.com/im/pictures/ad109d56-2421-40cd-98e6-e114160dc85b.jpg?im_w=720", 
+       title:"Experiences",
+       desc:"Find unforgettable activities nearby."
+    },
+    {
+      img:"https://a0.muscache.com/im/pictures/0ce799cb-7553-4369-be9e-d0011e0ef636.jpg?im_w=720", 
+      title:"Online experiences"
+      ,desc:"Live interactive activities led by the hosts."
+    },
+    {
+      img:"https://a0.muscache.com/im/pictures/f51f70fb-93b7-4974-86e8-1195b64f1353.jpg?im_w=720", 
+      title:"Olympians and Paralympians",
+      desc:"Online activities organized by athletes."
+    },
   ]
 
 useEffect(() => {
@@ -31,8 +45,9 @@ useEffect(() => {
 }
  }, 2000);
 }, [])
+
   return (
-    <div className="">
+    <div>
       <Head>
         <title>Airbnb</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -88,6 +103,8 @@ useEffect(() => {
           </Swiper>
        
         </section>
+
+       <TwoCards />
 
       <LargeCard 
           img='https://links.papareact.com/4cj'

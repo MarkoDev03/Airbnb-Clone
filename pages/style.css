@@ -64,7 +64,9 @@ progress::-webkit-progress-value {
         margin-inline: 8px;
         height: 8px;
       }
-      .image-banner{
-         
-      }
+
+}
+
+.banner {
+   margin-top: -60px;
 }
