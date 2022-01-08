@@ -7,8 +7,9 @@ import Map from "../components/Map";
 import axios from "axios";
 import Head from 'next/head'
 import { useState, useEffect } from "react";
+import {NotFoundError} from 'next/error';
 
-function search({ lat, lon, hotels }) {
+function search({ lat, lon, hotels, status }) {
 
     const router = useRouter()
     const { location, startDate, endDate, noOfGuests } = router.query;
@@ -33,35 +34,47 @@ function search({ lat, lon, hotels }) {
       </Head>
             <Header placeholder={placeHolder} />
 
-            <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'>
-               <section className='flex-grow pt-4 md:px-6 sm:rounded-t-lg ' id='container1'>
-                   <p className='pl-2 text-base'>{hotels.length} stays for - {range} - {noOfGuests} guests</p>
-                   <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {decodeURIComponent(location)}</h1>
-                   <div className='overflow-auto px-2 md:px-0 pb-2 flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
-                       <p className='button'>Cancellation Flexibility</p>
-                       <p className='button'>Type of Place</p>
-                       <p className='button'>Price</p>
-                       <p className='button'>Rooms and Beds</p>
-                       <p className='button'>Stars</p>
-                       <p className='button'>More filters</p>
-                   </div>
-                  <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" >
-                  {hotels.map((hotel) => (
-                       <InfoCard
-                           key={hotel.name}
-                           data={hotel}
-                           range={range}
-                           startDate={startDate}
-                           endDate={endDate}
-                           noOfGuests={noOfGuests}
-                       />
-                   ))}
-                  </div>
-               </section>
-               <section className='h-[450px] xl:h-[1000px]' id='container2'>
-                    <Map  lat={lat} lon={lon} hotels={hotels} />
-               </section>
-            </main>
+{
+    status == 200 ? (
+        <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'>
+        <section className='flex-grow pt-4 md:px-6 sm:rounded-t-lg ' id='container1'>
+            <p className='pl-2 text-base'>{hotels.length} stays for - {range} - {noOfGuests} guests</p>
+            <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {decodeURIComponent(location)}</h1>
+            <div className='overflow-auto px-2 md:px-0 pb-2 flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
+                <p className='button'>Cancellation Flexibility</p>
+                <p className='button'>Type of Place</p>
+                <p className='button'>Price</p>
+                <p className='button'>Rooms and Beds</p>
+                <p className='button'>Stars</p>
+                <p className='button'>More filters</p>
+            </div>
+           <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" >
+           {hotels.map((hotel) => (
+                <InfoCard
+                    key={hotel.name}
+                    data={hotel}
+                    range={range}
+                    startDate={startDate}
+                    endDate={endDate}
+                    noOfGuests={noOfGuests}
+                />
+            ))}
+           </div>
+        </section>
+        <section className='h-[450px] xl:h-[1000px]' id='container2'>
+             <Map  lat={lat} lon={lon} hotels={hotels} />
+        </section>
+     </main>
+    ) : (
+       <div className="flex justify-center items-center" style={{width:"100%"}}>
+                 <div className='flex justify-center items-center flex-col'>
+                       <h1 className='font-semibold text-red-500' style={{fontSize:"100px"}}>No results found for</h1>
+                       <h1 className='font-semibold text-gray-700' style={{fontSize:"30px", marginTop:"-55px"}}>{location}</h1>
+                 </div>
+       </div>
+    )
+}
+          
             <Footer />
         </div>
     )
@@ -69,7 +82,7 @@ function search({ lat, lon, hotels }) {
 
 export default search
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query, res }) {
     
     const location = query.location;
 
@@ -77,6 +90,13 @@ export async function getServerSideProps({ query }) {
 
     let lat = data.coord.lat;
     let lon = data.coord.lon;
+
+    let status = res.statusCode;
+
+    if (res.statusCode == 404 || data.cod == '404') {
+        status = 404;
+        return;
+    }
 
     const localPlaces = await axios.get('https://community-open-weather-map.p.rapidapi.com/find', {
        params: { lat, lon },
@@ -88,7 +108,10 @@ export async function getServerSideProps({ query }) {
 
    let hotels = [];
 
+   // const errorCode = data.ok ? false : data.statusCode;
+
    if (localPlaces.data.list.length > 0) {
+    status = 200;
 
     const TRAVEL_ADVISOR_API = 'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng';
 
@@ -132,6 +155,7 @@ export async function getServerSideProps({ query }) {
        }
    });
 
+
    let results = [
        ...places1.data.data,
        ...places2.data.data,
@@ -153,14 +177,16 @@ export async function getServerSideProps({ query }) {
             hotels.push(hotel)
          }
      });
-
-    }
+   } else {
+       status = 404;
+   }
 
     return {
         props: {
                 hotels,
                 lat,
-                lon
+                lon,
+                status
         },
     }
 }
