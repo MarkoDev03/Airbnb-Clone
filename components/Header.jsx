@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   SearchIcon,
   GlobeAltIcon,
@@ -56,11 +55,13 @@ function Header({ placeholder }) {
       <div 
       onClick={() => router.push('/')}
       className="relative flex items-center h-10 cursor-pointer my-auto">
-        <Image
+        <img
           src="https://links.papareact.com/qd3"
           layout="fill"
+          loading="lazy"
           objectFit="contain" 
           objectPosition="left"
+          style={{height:"100%"}}
         />
       </div>
 

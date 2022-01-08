@@ -1,11 +1,10 @@
-import Image from "next/image";
-
 function LastCard({img, title, description}) {
     return (
         <div className="cursor-pointer hover:scale-105 transform transition duration-300 ease-out mt-3">
             <div className="relative w-60 h-60 md:w-96 md:h-96 ">
-              <Image 
+              <img 
                   src={img}
+                  loading='lazy'
                   layout='fill'
                   className="rounded-xl"
                />
