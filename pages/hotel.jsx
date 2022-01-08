@@ -224,7 +224,7 @@ export async function getServerSideProps({ query })  {
         },
         headers: {
           'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
-          'x-rapidapi-key': 'a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052'
+          'x-rapidapi-key': '2f3da6e1f8msh0e218d3c91c9bfep1c2e3ajsnfa590390a0c4'
         }
       };
 

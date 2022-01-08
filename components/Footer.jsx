@@ -49,7 +49,7 @@ function Footer() {
                 <p>Trust and security</p>
             </div>
             <div className="flex col-span-1 md:col-span-4 border-t border-gray-300 justify-between pt-3">
-                  <p className="text-gray-800 text-sm md:text-lg">© 2021 Airbnb, Inc. · Privacy · Terms · Site Map</p>
+                  <p className="text-gray-800 text-base md:text-base">© 2021 Airbnb, Inc. · Privacy · Terms · Site Map</p>
                  <div className="flex">
                  <Facebook className="text-xl m-3" ></Facebook>
                  <Instagram  className="text-xl m-3"></Instagram>

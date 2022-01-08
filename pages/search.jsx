@@ -7,9 +7,9 @@ import Map from "../components/Map";
 import axios from "axios";
 import Head from 'next/head'
 import { useState, useEffect } from "react";
-import {NotFoundError} from 'next/error';
+import CityNotFound from "../components/CityNotFound";
 
-function search({ lat, lon, hotels, status }) {
+function search({ lat, lon, hotels, isFoundCity }) {
 
     const router = useRouter()
     const { location, startDate, endDate, noOfGuests } = router.query;
@@ -23,6 +23,10 @@ function search({ lat, lon, hotels, status }) {
       setPlaceHolder(window.innerWidth > 900 ? decodeURIComponent(location) + " |  " + range + " | " +  noOfGuests + " guests" : location)
     }, [location])
 
+    if (isFoundCity == '404') {
+      return <CityNotFound />
+    }
+
     return (
         <div>
         <Head>
@@ -33,48 +37,35 @@ function search({ lat, lon, hotels, status }) {
           <meta name="theme-color" content='#FFFFFF'></meta>
       </Head>
             <Header placeholder={placeHolder} />
-
-{
-    status == 200 ? (
-        <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'>
-        <section className='flex-grow pt-4 md:px-6 sm:rounded-t-lg ' id='container1'>
-            <p className='pl-2 text-base'>{hotels.length} stays for - {range} - {noOfGuests} guests</p>
-            <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {decodeURIComponent(location)}</h1>
-            <div className='overflow-auto px-2 md:px-0 pb-2 flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
-                <p className='button'>Cancellation Flexibility</p>
-                <p className='button'>Type of Place</p>
-                <p className='button'>Price</p>
-                <p className='button'>Rooms and Beds</p>
-                <p className='button'>Stars</p>
-                <p className='button'>More filters</p>
-            </div>
-           <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" >
-           {hotels.map((hotel) => (
-                <InfoCard
-                    key={hotel.name}
-                    data={hotel}
-                    range={range}
-                    startDate={startDate}
-                    endDate={endDate}
-                    noOfGuests={noOfGuests}
-                />
-            ))}
-           </div>
-        </section>
-        <section className='h-[450px] xl:h-[1000px]' id='container2'>
-             <Map  lat={lat} lon={lon} hotels={hotels} />
-        </section>
-     </main>
-    ) : (
-       <div className="flex justify-center items-center" style={{width:"100%"}}>
-                 <div className='flex justify-center items-center flex-col'>
-                       <h1 className='font-semibold text-red-500' style={{fontSize:"100px"}}>No results found for</h1>
-                       <h1 className='font-semibold text-gray-700' style={{fontSize:"30px", marginTop:"-55px"}}>{location}</h1>
-                 </div>
-       </div>
-    )
-}
-          
+            <main className='flex flex-col-reverse md:flex-none md:grid md:grid-cols-1 xl:grid-cols-2 search-component'>
+               <section className='flex-grow pt-4 md:px-6 sm:rounded-t-lg ' id='container1'>
+                   <p className='pl-2 text-base'>{hotels.length} stays for - {range} - {noOfGuests} guests</p>
+                   <h1 className='pl-2 text-3xl font-semibold mt-2 mb-6'>Stays in {decodeURIComponent(location)}</h1>
+                   <div className='overflow-auto px-2 md:px-0 pb-2 flex mb-5 text-gray-800 space-x-3 whitespace-nowrap'>
+                       <p className='button'>Cancellation Flexibility</p>
+                       <p className='button'>Type of Place</p>
+                       <p className='button'>Price</p>
+                       <p className='button'>Rooms and Beds</p>
+                       <p className='button'>Stars</p>
+                       <p className='button'>More filters</p>
+                   </div>
+                  <div className="flex flex-col xl:max-h-[800px] overflow-y-auto" >
+                  {hotels.map((hotel) => (
+                       <InfoCard
+                           key={hotel.name}
+                           data={hotel}
+                           range={range}
+                           startDate={startDate}
+                           endDate={endDate}
+                           noOfGuests={noOfGuests}
+                       />
+                   ))}
+                  </div>
+               </section>
+               <section className='h-[450px] xl:h-[1000px]' id='container2'>
+                    <Map  lat={lat} lon={lon} hotels={hotels} />
+               </section>
+            </main> 
             <Footer />
         </div>
     )
@@ -82,22 +73,24 @@ function search({ lat, lon, hotels, status }) {
 
 export default search
 
-export async function getServerSideProps({ query, res }) {
+export async function getServerSideProps({ query }) {
     
     const location = query.location;
 
-    const  { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=5b0b77f30d7a29f9e84f4b5bde0b8708`);
+    const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=3f3704f67363724ce67752a1862746c4`).then(
+    (res) => res.json()
+  );
 
-    let lat = data.coord.lat;
-    let lon = data.coord.lon;
 
-    let status = res.statusCode;
+    let lat = 0.000000;
+    let lon = 0.000000;
+    let isFoundCity = data.cod;
+    let hotels = [];
 
-    if (res.statusCode == 404 || data.cod == '404') {
-        status = 404;
-        return;
-    }
-
+    if (data.cod != '404') {
+       lat = data.coord.lat;
+       lon = data.coord.lon;
+      isFoundCity = '200'
     const localPlaces = await axios.get('https://community-open-weather-map.p.rapidapi.com/find', {
        params: { lat, lon },
        headers: {
@@ -106,12 +99,7 @@ export async function getServerSideProps({ query, res }) {
        },
    });
 
-   let hotels = [];
-
-   // const errorCode = data.ok ? false : data.statusCode;
-
    if (localPlaces.data.list.length > 0) {
-    status = 200;
 
     const TRAVEL_ADVISOR_API = 'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng';
 
@@ -139,11 +127,14 @@ export async function getServerSideProps({ query, res }) {
        }
    });
 
+   
+  //a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052 --istekao
+
    const places4 = await axios.get(TRAVEL_ADVISOR_API, {
        params: {latitude: localPlaces.data.list[3].coord.lat, longitude:localPlaces.data.list[3].coord.lon},
        headers: {
          'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
-         'x-rapidapi-key': 'a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052'
+         'x-rapidapi-key': '7f4fd1a717msh403ad75a852159dp1ea7e8jsn2736aeb92d7b'
        }
    });
 
@@ -151,7 +142,7 @@ export async function getServerSideProps({ query, res }) {
        params: {latitude: localPlaces.data.list[4].coord.lat, longitude:localPlaces.data.list[4].coord.lon},
        headers: {
          'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
-         'x-rapidapi-key': 'a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052'
+         'x-rapidapi-key': '7f4fd1a717msh403ad75a852159dp1ea7e8jsn2736aeb92d7b'
        }
    });
 
@@ -177,16 +168,18 @@ export async function getServerSideProps({ query, res }) {
             hotels.push(hotel)
          }
      });
-   } else {
-       status = 404;
-   }
+   } 
+  } else {
+    isFoundCity = '404';
+  }
 
     return {
         props: {
                 hotels,
                 lat,
                 lon,
-                status
-        },
+                isFoundCity
+        }
+      
     }
 }
