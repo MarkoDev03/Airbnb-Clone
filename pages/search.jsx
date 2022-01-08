@@ -20,7 +20,7 @@ function search({ lat, lon, hotels, isFoundCity }) {
     const [placeHolder, setPlaceHolder] = useState("");
 
     useEffect(() => {
-      setPlaceHolder(window.innerWidth > 900 ? decodeURIComponent(location) + " |  " + range + " | " +  noOfGuests + " guests" : location)
+      setPlaceHolder(window.innerWidth > 900 ? decodeURIComponent(location) + " |  " + range + " | " +  noOfGuests + " guests" : decodeURIComponent(location));
     }, [location])
 
     if (isFoundCity == '404') {
@@ -78,10 +78,9 @@ export async function getServerSideProps({ query }) {
     const location = query.location;
 
     const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=3f3704f67363724ce67752a1862746c4`).then(
-    (res) => res.json()
-  );
-
-
+       (res) => res.json()
+   );
+   
     let lat = 0.000000;
     let lon = 0.000000;
     let isFoundCity = data.cod;
@@ -101,7 +100,7 @@ export async function getServerSideProps({ query }) {
 
    if (localPlaces.data.list.length > 0) {
 
-    const TRAVEL_ADVISOR_API = 'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng';
+   const TRAVEL_ADVISOR_API = 'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng';
 
    const places1 = await axios.get(TRAVEL_ADVISOR_API, {
    params: {latitude: localPlaces.data.list[0].coord.lat, longitude:localPlaces.data.list[0].coord.lon},
@@ -127,7 +126,6 @@ export async function getServerSideProps({ query }) {
        }
    });
 
-   
   //a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052 --istekao
 
    const places4 = await axios.get(TRAVEL_ADVISOR_API, {
@@ -145,7 +143,6 @@ export async function getServerSideProps({ query }) {
          'x-rapidapi-key': '7f4fd1a717msh403ad75a852159dp1ea7e8jsn2736aeb92d7b'
        }
    });
-
 
    let results = [
        ...places1.data.data,
