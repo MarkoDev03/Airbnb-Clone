@@ -126,8 +126,6 @@ export async function getServerSideProps({ query }) {
        }
    });
 
-  //a35aa7cb0amsh1ffdef678fb532bp16138bjsn550b1dccc052 --istekao
-
    const places4 = await axios.get(TRAVEL_ADVISOR_API, {
        params: {latitude: localPlaces.data.list[3].coord.lat, longitude:localPlaces.data.list[3].coord.lon},
        headers: {
