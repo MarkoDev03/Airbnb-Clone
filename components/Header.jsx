@@ -10,6 +10,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css"; 
 import { DateRangePicker } from "react-date-range";
 import { useRouter } from 'next/dist/client/router'
+import Logo from "../media/logo.png"
 
 export const LocationContext = createContext()
 
@@ -56,11 +57,11 @@ function Header({ placeholder }) {
       onClick={() => router.push('/')}
       className="relative flex items-center h-10 cursor-pointer my-auto">
         <img
-          src="https://links.papareact.com/qd3"
+          src={Logo.src}
           layout="fill"
           loading="lazy"
           objectFit="contain" 
-          objectPosition="left"
+
           style={{height:"100%"}}
         />
       </div>
@@ -73,7 +74,7 @@ function Header({ placeholder }) {
           placeholder={placeholder || "Start your search"}
           className="md:flex-grow md:pl-5 bg-transparent outline-none text-sm text-center md:text-left"
         />
-        <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2 " />
+        <SearchIcon className="hidden md:inline-flex h-8  text-white rounded-full p-2 cursor-pointer md:mx-2 " style={{ backgroundColor:"#d70466" }} />
         <div className="flex md:hidden md:auto mr-2  w-auto md:col-span-1 md:space-x-4 items-center justify-end text-gray-500 ">
         <p className="hidden md:inline-flex cursor-pointer">Become a host</p>
         <GlobeAltIcon className="hidden md:inline-flex h-5" />
@@ -95,11 +96,12 @@ function Header({ placeholder }) {
       </div>
 
       {searchInput && (
-        <div className="flex flex-col col-span-3 mx-auto mt-5 ">
+        <div className="flex flex-col mx-auto mt-5" style={{ position:"fixed", top:window.innerWidth > 650 ? 65 : 40, left: 0, justifyContent:"flex-start", alignItems:"center", width:"100%", backgroundColor:"rgba(0,0,0,0.5)", height:"100vh" }}>
+          <div className="bg-white rounded-lg p-3 mt-3">
           <DateRangePicker
             ranges={[selectionRange]}
             minDate={new Date()}
-            rangeColors={["#FD5B61"]}
+            rangeColors={["#d70466"]}
             onChange={handleSelect}
           />
           <div className="flex items-center border-b mb-4">
@@ -110,11 +112,12 @@ function Header({ placeholder }) {
                  onChange={(e) => setNoOfGuests(e.target.value)}
                  type="number" 
                  min={1}
-                 className="w-12 text-lg outline-none text-red-400" />
+                 className="w-12 text-lg outline-none " style={{ color:"#d70466" }}/>
           </div>
           <div className="flex pb-3 md:pb-0">
               <button className="flex-grow text-gray-500" onClick={resetInput}>Cancel</button>
-              <button  className="flex-grow text-red-500" onClick={search}>Search</button>
+              <button  className="flex-grow" style={{ color:"#d70466" }}  onClick={search}>Search</button>
+          </div>
           </div>
         </div>
       )}

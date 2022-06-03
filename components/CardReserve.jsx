@@ -11,7 +11,7 @@ function CardReserve({price, votecount, rating, start, end, noOfGuests}) {
          </h1>
           
           <div className='flex items-center'>
-             <StarIcon className="h-5 w-5" style={{color:"#FE595E", fill:"#FE595E"}} />
+             <StarIcon className="h-5 w-5" style={{color:"#d70466", fill:"#d70466"}} />
              <span>{rating}</span>
              <span className='underline ml-1 text-gray-700'>({votecount} reviews)</span>
           </div>
@@ -40,7 +40,7 @@ function CardReserve({price, votecount, rating, start, end, noOfGuests}) {
                </div>
         </div>
         
-         <button style={{width:"100%", backgroundColor:"#FE595E"}} className='rounded-lg uppercase py-2 font-semibold text-lg my-2 text-white'>reserve</button>
+         <button style={{width:"100%", backgroundColor:"#d70466"}} className='rounded-lg uppercase py-2 font-semibold text-lg my-2 text-white'>reserve</button>
 
           <div className='text-center my-1'  style={{width:"100%"}}>
               <span className='text-gray-500 text-sm'>We still won't charge you anything</span>

@@ -29,55 +29,55 @@ function hotel({ name, latitude, longitude, rating, votecount, price, startTime,
         {
             title: "Hotel description",
             value: hotel_description,
-            icon: <BsInfoCircle className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />,
+            icon: <BsInfoCircle className="h-7 w-7 mr-2" style={{color:"#d70466", fill:"#d70466"}} />,
             isLink: false
         },
         {
             title: "Distance from downtown",
             value: distance_km,
-            icon: <HiLocationMarker className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />,
+            icon: <HiLocationMarker className="h-7 w-7 mr-2" style={{color:"#d70466", fill:"#d70466"}} />,
             isLink: false
         },
         {
             title:"Working",
             value: isClosed,
-            icon: <BsClock className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />,
+            icon: <BsClock className="h-7 w-7 mr-2" style={{color:"#d70466", fill:"#d70466"}} />,
             isLink: false
         },
         {
             title: "Category",
             value: category_name,
-            icon: <BsBuilding className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />,
+            icon: <BsBuilding className="h-7 w-7 mr-2" style={{color:"#d70466", fill:"#d70466"}} />,
             isLink: false
         },
         {
             title: "Ranking description",
             value: ranking_description,
-            icon: <BsCardText className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />,
+            icon: <BsCardText className="h-7 w-7 mr-2" style={{color:"#d70466", fill:"#d70466"}} />,
             isLink: false
         },
         {
             title: "Hotel class attribution",
             value: hotel_class_attribution,
-            icon: <BsBarChart className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />,
+            icon: <BsBarChart className="h-7 w-7 mr-2" style={{color:"#d70466", fill:"#d70466"}} />,
             isLink: false
         },
         {
           title: "Website",
           value: website,
-          icon: <BsLink className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />,
+          icon: <BsLink className="h-7 w-7 mr-2" style={{color:"#d70466", fill:"#d70466"}} />,
           isLink: true
         },
         {
           title: "Write review",
           value: write_review,
-          icon: <BsPencil className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />,
+          icon: <BsPencil className="h-7 w-7 mr-2" style={{color:"#d70466", fill:"#d70466"}} />,
           isLink: true
         },
         {
           title: "Web url - Trip Advisor",
           value: web_url,
-          icon: <BsPencil className="h-7 w-7 mr-2" style={{color:"#FE595E", fill:"#FE595E"}} />,
+          icon: <BsPencil className="h-7 w-7 mr-2" style={{color:"#d70466", fill:"#d70466"}} />,
           isLink: true
         }
     ];
@@ -131,7 +131,7 @@ function hotel({ name, latitude, longitude, rating, votecount, price, startTime,
 
              <div className='flex justify-start items-start flex-col border-t-2 border-gray-200 py-2 pt-5 my-2 px-2' style={{width:"100%"}}>
               <div className='flex justify-start items-center my-2' style={{width:"100%"}}>
-                  <StarIcon className="h-7 w-7" style={{color:"#FE595E", fill:"#FE595E"}} />
+                  <StarIcon className="h-7 w-7" style={{color:"#d70466", fill:"#d70466"}} />
                   <span className='text-xl font-semibold'>{rating}</span>
                   <span className='ml-1 text-gray-700 text-xl'>{votecount} reviews</span>
               </div>
