@@ -59,7 +59,7 @@ useEffect(() => {
       <Header></Header>
       <Banner src="https://links.papareact.com/0fm"></Banner>
 
-      <main className=" mx-auto px-8 sm:px-16" style={{ maxWidth:"75%" }}>
+      <main className="max-w-7xl mx-auto px-8 sm:px-16" >
         <section className="pt-6">
           <h2 className="text-xl md:text-4xl font-semibold pb-0 md:pb-5">Explore Nearby</h2>
 
